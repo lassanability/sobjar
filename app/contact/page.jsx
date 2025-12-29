@@ -5,10 +5,11 @@ import { MdEmail as EmailIcon } from "react-icons/md";
 import { IoCall as PhoneIcon } from "react-icons/io5";
 import { IoLocationOutline as LocationIcon } from "react-icons/io5";
 import { FaClock as ClockIcon } from "react-icons/fa";
-import { FaFacebookF as FacebookIcon } from "react-icons/fa";
-import { BsInstagram as InstagramIcon } from "react-icons/bs";
-import { FaWhatsapp as WhatsappIcon } from "react-icons/fa";
-import { FaYoutube as YoutubeIcon } from "react-icons/fa";
+import Image from "next/image";
+import FacebookLogo from "@/public/assets/facebook.png";
+import WhatsappLogo from "@/public/assets/whatsapp.png";
+import TiktokLogo from "@/public/assets/tiktok.png";
+import YoutubeLogo from "@/public/assets/youtube.png";
 import styles from "@/app/styles/contact.module.css";
 
 export default function ContactPage() {
@@ -31,10 +32,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", formData);
     alert("Thank you for your message! We'll get back to you soon.");
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -239,47 +238,43 @@ export default function ContactPage() {
           
           <div className={styles.socialGrid}>
             <div className={styles.socialCard} onClick={() => handleSocialClick("https://m.facebook.com/SobjarCanada/")}>
-              <div className={`${styles.socialIconWrapper} ${styles.facebook}`}>
-                <FacebookIcon className={styles.socialIcon} />
-              </div>
-              <div className={styles.socialContent}>
-                <h3>Facebook</h3>
-                <p>Follow us for community updates and event announcements</p>
-                <span className={styles.socialLink}>@SobjarCanada</span>
-              </div>
+              <Image 
+                src={FacebookLogo} 
+                alt="Facebook" 
+                width={60} 
+                height={60}
+                className={styles.socialImage}
+              />
             </div>
 
             <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.instagram.com/sobjarstar/")}>
-              <div className={`${styles.socialIconWrapper} ${styles.instagram}`}>
-                <InstagramIcon className={styles.socialIcon} />
-              </div>
-              <div className={styles.socialContent}>
-                <h3>Instagram</h3>
-                <p>See photos from our programs and community activities</p>
-                <span className={styles.socialLink}>@sobjarstar</span>
-              </div>
+              <Image 
+                src={TiktokLogo} 
+                alt="TikTok" 
+                width={60} 
+                height={60}
+                className={styles.socialImage}
+              />
             </div>
 
             <div className={styles.socialCard} onClick={() => handleSocialClick("https://chat.whatsapp.com/CnjBdL4RvVT7raFaJHml88")}>
-              <div className={`${styles.socialIconWrapper} ${styles.whatsapp}`}>
-                <WhatsappIcon className={styles.socialIcon} />
-              </div>
-              <div className={styles.socialContent}>
-                <h3>WhatsApp</h3>
-                <p>Join our community group for quick updates and support</p>
-                <span className={styles.socialLink}>Join Group Chat</span>
-              </div>
+              <Image 
+                src={WhatsappLogo} 
+                alt="WhatsApp" 
+                width={60} 
+                height={60}
+                className={styles.socialImage}
+              />
             </div>
 
             <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.youtube.com/channel/UCquX1JwHrF0_ijoCIZGuwhA")}>
-              <div className={`${styles.socialIconWrapper} ${styles.youtube}`}>
-                <YoutubeIcon className={styles.socialIcon} />
-              </div>
-              <div className={styles.socialContent}>
-                <h3>YouTube</h3>
-                <p>Watch videos about our programs and community stories</p>
-                <span className={styles.socialLink}>Subscribe to Channel</span>
-              </div>
+              <Image 
+                src={YoutubeLogo} 
+                alt="YouTube" 
+                width={60} 
+                height={60}
+                className={styles.socialImage}
+              />
             </div>
           </div>
         </section>
