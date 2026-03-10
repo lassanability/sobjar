@@ -34,7 +34,7 @@ export default function Footer() {
 
   const handleTiktokClick = () => {
     window.open(
-      "https://www.tiktok.com/search?lang=en&q=sobjarstar&t=1753184904436",
+      "https://www.tiktok.com/@sobjarstar5?_r=1&_t=ZS-94aBnEIQlCJ",
       "_blank"
     );
   };

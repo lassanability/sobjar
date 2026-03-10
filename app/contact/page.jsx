@@ -247,7 +247,7 @@ export default function ContactPage() {
               />
             </div>
 
-            <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.instagram.com/sobjarstar/")}>
+            <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.tiktok.com/@sobjarstar5?_r=1&_t=ZS-94aBnEIQlCJ")}>
               <Image 
                 src={TiktokLogo} 
                 alt="TikTok" 

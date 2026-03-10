@@ -4,11 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Styles from "@/app/styles/getInvolved.module.css";
 
-// You'll need to add these images to your public/assets folder
-// import VolunteerImage from "@/public/assets/volunteer-hero.jpg";
-// import PartnershipsImage from "@/public/assets/partnerships-hero.jpg";
-// import EventsImage from "@/public/assets/events-hero.jpg";
-// import CommunityImpactImage from "@/public/assets/community-impact.jpg";
+
 
 export default function GetInvolved() {
   const involvementOptions = [
