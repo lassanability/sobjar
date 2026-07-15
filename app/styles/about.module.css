@@ -380,6 +380,59 @@
     color: var(--brand-primary);
   }
 
+  .sportsSection {
+    padding: 50px 0;
+    background-color: var(--neutral-white);
+  }
+
+  .sportsSectionWrapper {
+    gap: 30px;
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+    flex-direction: column;
+  }
+
+  .sportsGrid {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sportCard {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    flex: 1 1 calc(50% - 10px);
+  }
+
+  .sportImage {
+    border-radius: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .sportCard:hover .sportImage {
+    transform: scale(1.05);
+  }
+
+  .sportOverlay {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    align-items: flex-end;
+    background: linear-gradient(transparent, var(--brand-primary));
+  }
+
+  .sportOverlay span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--neutral-white);
+  }
+
   .leadershipSection {
     padding: 50px 0;
   }
@@ -530,6 +583,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+  }
+
+  .sportsSection {
+    padding: 100px 0;
+  }
+
+  .sportCard {
+    height: 250px;
+    flex: 1 1 calc(25% - 10px);
   }
 
   .leadershipSection {

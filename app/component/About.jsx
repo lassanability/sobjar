@@ -6,6 +6,14 @@ import AboutImage from "@/public/assets/about.jpg";
 import styles from "@/app/styles/about.module.css";
 import LeaderImage from "@/public/assets/leader.jpg";
 import CommunityImage from "@/public/assets/community.jpg";
+import SportImage1 from "@/public/assets/sport1.jpeg";
+import SportImage2 from "@/public/assets/sport2.jpeg";
+import SportImage3 from "@/public/assets/sport3.jpeg";
+import SportImage4 from "@/public/assets/sport4.jpeg";
+import SportImage5 from "@/public/assets/sport5.jpeg";
+import SportImage6 from "@/public/assets/sport6.jpeg";
+import SportImage7 from "@/public/assets/sport7.jpeg";
+import SportImage8 from "@/public/assets/sport8.jpeg";
 import {
   IoArrowForward,
   IoCheckmarkCircle,
@@ -73,6 +81,41 @@ const achievements = [
     title: "Educational Impact",
     description: "Students supported in their academic journey",
     metric: "800+",
+  },
+];
+
+const sportsGallery = [
+  {
+    image: SportImage1,
+    title: "Sobjar Star FC",
+  },
+  {
+    image: SportImage2,
+    title: "Match Day",
+  },
+  {
+    image: SportImage3,
+    title: "Team Spirit",
+  },
+  {
+    image: SportImage4,
+    title: "Community Tournament",
+  },
+  {
+    image: SportImage5,
+    title: "Coaching & Mentorship",
+  },
+  {
+    image: SportImage6,
+    title: "Youth in Action",
+  },
+  {
+    image: SportImage7,
+    title: "Game Time",
+  },
+  {
+    image: SportImage8,
+    title: "United on the Pitch",
   },
 ];
 
@@ -261,6 +304,38 @@ export default function About() {
                 <div className={styles.achievementContent}>
                   <h4>{achievement.title}</h4>
                   <p>{achievement.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.sportsSection}>
+        <div className={styles.sportsSectionWrapper}>
+          <div className={styles.valuesHeader}>
+            <span className={styles.sectionTag}>Our Sports</span>
+            <h2>Uniting Community Through Football</h2>
+            <p>
+              Through our Sobjar Star football program, we bring youth and
+              families together on the pitch. Every match builds teamwork,
+              discipline, and lasting friendships across our community.
+            </p>
+          </div>
+          <div className={styles.sportsGrid}>
+            {sportsGallery.map((sport, index) => (
+              <div key={index} className={styles.sportCard}>
+                <Image
+                  src={sport.image}
+                  alt={sport.title}
+                  fill
+                  sizes="100vw"
+                  quality={100}
+                  style={{ objectFit: "cover" }}
+                  className={styles.sportImage}
+                />
+                <div className={styles.sportOverlay}>
+                  <span>{sport.title}</span>
                 </div>
               </div>
             ))}
