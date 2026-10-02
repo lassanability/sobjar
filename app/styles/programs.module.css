@@ -964,3 +964,6 @@
     border: 2px solid var(--neutral-black);
   }
 }
+.sectionCategory[data-color="#10b981"] { --category-color: #10b981; }
+.sectionCategory[data-color="#3b82f6"] { --category-color: #3b82f6; }
+.sectionCategory[data-color="#8b5cf6"] { --category-color: #8b5cf6; }

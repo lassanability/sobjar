@@ -1,0 +1,27 @@
+.grid {
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.item {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--corner-prominent);
+}
+
+.image {
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.item:hover .image {
+  transform: scale(1.05);
+}
+
+@media (min-width: 48em) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

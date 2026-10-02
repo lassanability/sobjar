@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import MissionImage from "@/public/assets/mission.jpg";
 import EventMission from "@/public/assets/eventMission.jpg";
@@ -14,6 +12,7 @@ import {
   IoTrophy,
   IoLogoWhatsapp,
 } from "react-icons/io5";
+import { WHATSAPP_URL } from "@/app/lib/site";
 import styles from "@/app/styles/mission.module.css";
 
 const aboutSections = [
@@ -100,10 +99,6 @@ const purposes = [
 ];
 
 export default function Mission() {
-  const handleWhatsappClick = () => {
-    window.open("https://chat.whatsapp.com/CnjBdL4RvVT7raFaJHml88", "_blank");
-  };
-
   return (
     <div className={styles.aboutContainer}>
       <section className={styles.contentWrapper}>
@@ -123,7 +118,6 @@ export default function Mission() {
                     sizes="(max-width: 768px) 100vw, 50vw"
                     quality={100}
                     className={styles.sectionImage}
-                    style={{ objectFit: "cover" }}
                   />
                   <div className={styles.imageOverlay}></div>
                 </div>
@@ -205,14 +199,15 @@ export default function Mission() {
               stronger families, educate our youth, and create lasting positive
               change.
             </p>
-              <button 
-                onClick={handleWhatsappClick}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={styles.ctaButton}
-                aria-label="Join our WhatsApp community"
               >
                 <IoLogoWhatsapp className={styles.ctaIcon} />
                 Join Our WhatsApp Community
-              </button>
+              </a>
           </div>
         </div>
         <div className={styles.ctaPattern}></div>

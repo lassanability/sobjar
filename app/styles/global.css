@@ -100,6 +100,7 @@
   }
 
   body {
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-weight: 400;
     line-height: 1.4;
 
@@ -328,4 +329,10 @@
     --text-normal: 18px;
     --space-huge: 48px;
   }
+}
+
+[data-sonner-toast].toast {
+  color: var(--neutral-white);
+  border-radius: var(--corner-bold);
+  background-color: var(--brand-primary);
 }

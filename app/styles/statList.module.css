@@ -1,0 +1,39 @@
+.list {
+  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+.item {
+  gap: 4px;
+  display: flex;
+  padding: 16px;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: var(--corner-prominent);
+  background-color: var(--background-accent);
+}
+
+.item dd {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--brand-primary);
+}
+
+.item dt {
+  font-size: 0.9rem;
+  color: var(--neutral-medium-gray);
+}
+
+.light .item {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.light .item dd {
+  color: var(--neutral-white);
+}
+
+.light .item dt {
+  color: var(--teal-100);
+}

@@ -33,6 +33,7 @@ const navItems = [
       "Discover the transformative journey of Somali youth through our mission to empower them for a brighter tomorrow.",
   },
   { name: "Mission", href: "/mission" },
+  { name: "Sobjar Star", href: "/sobjar-star" },
   {
     name: "Programs",
     href: "/programs",
@@ -49,7 +50,7 @@ const navItems = [
     imageDescription:
       "We believe in fostering strong community bonds through youth initiatives, outreach programs, and educational support.",
   },
-  { name: "Blog", href: "/blog" },
+  { name: "News", href: "/blog" },
   {
     name: "Get Involved",
     href: "/getInvolved",
@@ -72,7 +73,7 @@ const navItems = [
 export default function Navbar() {
   const { isOpen, toggleOpen, setOpen, setClose } = useDrawerStore();
   const [isMobile, setMobile] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState("null");
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -90,8 +91,6 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, [setClose]);
 
-  const handleLogoClick = () => router.push("/", { scroll: false });
-
   const handleNavItemClick = () => {
     if (isMobile) {
       setClose();
@@ -100,15 +99,15 @@ export default function Navbar() {
 
   return (
     <div className={styles.navContainer}>
-      <div className={styles.navLogo} onClick={handleLogoClick}>
+      <Link href="/" className={styles.navLogo} aria-label="Sobjar Canada home">
         <Image
           src={LogoImg}
-          alt="Logo"
+          alt="Sobjar Canada"
           width={100}
           priority
           className={styles.navLogoImg}
         />
-      </div>
+      </Link>
 
       {!isMobile && (
         <div className={styles.navlinksContainer}>

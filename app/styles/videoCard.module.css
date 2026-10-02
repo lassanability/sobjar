@@ -1,0 +1,27 @@
+.card {
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  max-height: 560px;
+  object-fit: cover;
+  background-color: var(--neutral-black);
+  border-radius: var(--corner-bold);
+  box-shadow: var(--shadow-prominent);
+}
+
+.card figcaption {
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  color: var(--neutral-white);
+}
+
+.card figcaption span {
+  font-size: 0.9rem;
+  color: var(--teal-100);
+}

@@ -606,3 +606,10 @@
     flex-direction: row;
   }
 }
+
+.heroImage,
+.sectionImage,
+.sportImage,
+.leadershipImage {
+  object-fit: cover;
+}

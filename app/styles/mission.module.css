@@ -417,3 +417,7 @@
     border: 2px solid var(--neutral-black);
   }
 }
+
+.sectionImage {
+  object-fit: cover;
+}

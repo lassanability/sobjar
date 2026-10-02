@@ -6,10 +6,10 @@ export default function manifest() {
     start_url: '/',
     scope: '/',
     display: 'standalone',
-    orientation: 'portrait',
+    
     background_color: '#F0F6F4',
-    theme_color: '#2D3748',
-    categories: ['youth', "community", "ngo", 'canada youth', 'canada ngo', 'canada community'],
+    theme_color: '#009077',
+    categories: ['youth', "community", "ngo", 'sports'],
     
     icons: [
       {

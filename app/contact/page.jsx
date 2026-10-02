@@ -73,7 +73,7 @@ export default function ContactPage() {
               </div>
               <div className={styles.contactDetails}>
                 <h3>Our Location</h3>
-                <p>Alberta, Canada</p>
+                <p>12607 124 Street, Edmonton, Alberta T5L 0N8</p>
                 <p className={styles.contactNote}>Serving communities across Alberta</p>
               </div>
             </div>
@@ -295,16 +295,7 @@ export default function ContactPage() {
                   <LocationIcon className={styles.visitIcon} />
                   <div>
                     <h4>Address</h4>
-                    <p>Alberta, Canada</p>
-                  </div>
-                </div>
-                
-                <div className={styles.visitItem}>
-                  <ClockIcon className={styles.visitIcon} />
-                  <div>
-                    <h4>Office Hours</h4>
-                    <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
-                    <p>Weekend visits by appointment</p>
+                    <p>12607 124 Street, Edmonton, Alberta T5L 0N8</p>
                   </div>
                 </div>
                 
@@ -319,13 +310,6 @@ export default function ContactPage() {
               </div>
             </div>
             
-            <div className={styles.visitImagePlaceholder}>
-              <div className={styles.placeholderContent}>
-                <LocationIcon className={styles.placeholderIcon} />
-                <p>Office Location</p>
-                <small>Alberta, Canada</small>
-              </div>
-            </div>
           </div>
         </section>
       </div>

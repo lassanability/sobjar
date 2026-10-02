@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  border-radius: var(--corner-bold);
+  background-color: var(--background-card);
+  border: var(--border-thin);
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-prominent);
+}
+
+.media {
+  height: 200px;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.body {
+  gap: 12px;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+}
+
+.body p {
+  text-align: left;
+  color: var(--neutral-medium-gray);
+}
+
+.link {
+  font-weight: var(--font-weight-semibold);
+  color: var(--brand-primary);
+}

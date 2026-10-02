@@ -166,30 +166,6 @@ const programStats = [
   }
 ];
 
-const upcomingEvents = [
-  {
-    title: "Youth Leadership Workshop",
-    date: "August 15, 2025",
-    time: "10:00 AM - 4:00 PM",
-    location: "Community Center",
-    category: "Youth Programs"
-  },
-  {
-    title: "Family Fun Day",
-    date: "August 22, 2025", 
-    time: "12:00 PM - 5:00 PM",
-    location: "Central Park",
-    category: "Community Outreach"
-  },
-  {
-    title: "English Conversation Circle",
-    date: "Every Tuesday",
-    time: "6:30 PM - 8:00 PM",
-    location: "Library Branch",
-    category: "Educational Initiatives"
-  }
-];
-
 export default function Programs() {
   return (
     <div className={styles.programsContainer}>
@@ -276,7 +252,7 @@ export default function Programs() {
 
                 <div className={styles.sectionContent}>
                   <div className={styles.sectionContentHeader}>
-                    <span className={styles.sectionCategory} style={{'--category-color': program.color}}>
+                    <span className={styles.sectionCategory} data-color={program.color}>
                       {program.category}
                     </span>
                     <h3 className={styles.sectionContentTitle}>{program.title}</h3>
@@ -379,43 +355,6 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-      <section className={styles.eventsSection}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.eventsHeader}>
-            <span className={styles.sectionTag}>Upcoming Events</span>
-            <h2 className={styles.sectionTitle}>Join Us Soon</h2>
-            <p className={styles.sectionSubtitle}>
-              Don't miss these upcoming program activities and community events
-            </p>
-          </div>
-          <div className={styles.eventsGrid}>
-            {upcomingEvents.map((event, index) => (
-              <div key={index} className={styles.eventCard}>
-                <div className={styles.eventHeader}>
-                  <div className={styles.eventCategory}>{event.category}</div>
-                  <h4 className={styles.eventTitle}>{event.title}</h4>
-                </div>
-                <div className={styles.eventDetails}>
-                  <div className={styles.eventDetail}>
-                    <IoCalendar className={styles.eventIcon} />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className={styles.eventDetail}>
-                    <IoTime className={styles.eventIcon} />
-                    <span>{event.time}</span>
-                  </div>
-                  <div className={styles.eventDetail}>
-                    <IoLocation className={styles.eventIcon} />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className={styles.ctaSection}>
         <div className={styles.contentWrapper}>
@@ -428,7 +367,7 @@ export default function Programs() {
               </p>
             </div>
             <div className={styles.ctaButtons}>
-              <Link href="/get-involved" className={styles.ctaPrimary}>
+              <Link href="/getInvolved" className={styles.ctaPrimary}>
                 Join a Program
                 <IoArrowForward className={styles.ctaIcon} />
               </Link>

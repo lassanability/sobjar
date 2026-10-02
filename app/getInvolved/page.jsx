@@ -20,7 +20,7 @@ export default function GetInvolved() {
         "Translation and interpretation services"
       ],
       buttonText: "Start Volunteering",
-      link: "/get-involved/volunteer",
+      link: "/contact",
       // image: VolunteerImage,
       color: "primary"
     },
@@ -36,7 +36,7 @@ export default function GetInvolved() {
         "Community organization alliances"
       ],
       buttonText: "Explore Partnerships",
-      link: "/get-involved/partnerships",
+      link: "/contact",
       // image: PartnershipsImage,
       color: "secondary"
     },
@@ -52,17 +52,10 @@ export default function GetInvolved() {
         "Community fundraising events"
       ],
       buttonText: "View Events",
-      link: "/get-involved/events",
+      link: "/contact",
       // image: EventsImage,
       color: "tertiary"
     }
-  ];
-
-  const impactStats = [
-    { number: "500+", label: "Families Served" },
-    { number: "150+", label: "Active Volunteers" },
-    { number: "25+", label: "Community Partners" },
-    { number: "50+", label: "Annual Events" }
   ];
 
   return (
@@ -75,14 +68,6 @@ export default function GetInvolved() {
             Join our mission to empower the Somali Bantu community through meaningful engagement, 
             partnership, and shared commitment to positive change.
           </p>
-          <div className={Styles.heroStats}>
-            {impactStats.map((stat, index) => (
-              <div key={index} className={Styles.statItem}>
-                <span className={Styles.statNumber}>{stat.number}</span>
-                <span className={Styles.statLabel}>{stat.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -104,7 +89,6 @@ export default function GetInvolved() {
             <div 
               key={option.id} 
               className={`${Styles.optionCard} ${Styles[option.color]} ${Styles.fadeInSection}`}
-              style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className={Styles.cardContent}>
                 <div className={Styles.cardHeader}>
@@ -128,16 +112,6 @@ export default function GetInvolved() {
                 </Link>
               </div>
               
-              {/* Uncomment when images are available */}
-              {/* <div className={Styles.cardImageContainer}>
-                <Image 
-                  src={option.image} 
-                  alt={option.title}
-                  className={Styles.cardImage}
-                  width={400}
-                  height={300}
-                />
-              </div> */}
             </div>
           ))}
         </div>
@@ -169,16 +143,6 @@ export default function GetInvolved() {
               </div>
             </div>
             
-            {/* Uncomment when image is available */}
-            {/* <div className={Styles.impactImageContainer}>
-              <Image 
-                src={CommunityImpactImage} 
-                alt="Community Impact"
-                className={Styles.impactImage}
-                width={500}
-                height={400}
-              />
-            </div> */}
           </div>
         </div>
 
@@ -191,7 +155,7 @@ export default function GetInvolved() {
               Whether you have five minutes or five hours, your contribution matters.
             </p>
             <div className={Styles.ctaButtons}>
-              <Link href="/get-involved/volunteer" className={`${Styles.ctaButton} ${Styles.primary}`}>
+              <Link href="/contact" className={`${Styles.ctaButton} ${Styles.primary}`}>
                 Volunteer Today
               </Link>
               <Link href="/contact" className={`${Styles.ctaButton} ${Styles.secondary}`}>

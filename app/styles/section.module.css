@@ -1,0 +1,25 @@
+.section {
+  padding: 56px 16px;
+}
+
+.white {
+  background-color: var(--neutral-white);
+}
+
+.tint {
+  background-color: var(--background-secondary);
+}
+
+.inner {
+  gap: 40px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  max-width: var(--max-content-width);
+}
+
+@media (min-width: 48em) {
+  .section {
+    padding: 88px 32px;
+  }
+}

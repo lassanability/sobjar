@@ -1,0 +1,154 @@
+.hero {
+  display: flex;
+  overflow: hidden;
+  min-height: 85svh;
+  position: relative;
+  padding: 64px 16px 112px;
+  align-items: center;
+  background-color: var(--teal-900);
+}
+
+.image {
+  opacity: 0;
+  object-fit: cover;
+  transition: opacity 0.8s ease;
+}
+
+.imageActive {
+  opacity: 1;
+}
+
+.overlay {
+  inset: 0;
+  position: absolute;
+  background: linear-gradient(110deg, rgba(19, 78, 74, 0.9) 0%, rgba(19, 78, 74, 0.45) 100%);
+}
+
+.content {
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+}
+
+.slide {
+  gap: 20px;
+  display: flex;
+  max-width: 680px;
+  flex-direction: column;
+  color: var(--neutral-white);
+  animation: slideIn 0.6s ease both;
+}
+
+.slide h1,
+.slide h2 {
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.slide p {
+  text-align: left;
+  font-size: 1.1rem;
+  color: var(--teal-100);
+}
+
+.accent {
+  width: fit-content;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.18);
+}
+
+.controls {
+  gap: 8px;
+  z-index: 2;
+  left: 16px;
+  right: 16px;
+  bottom: 32px;
+  display: flex;
+  margin: 0 auto;
+  position: absolute;
+  align-items: center;
+  max-width: var(--max-content-width);
+}
+
+.toggle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.indicator {
+  flex: 1;
+  height: 12px;
+  max-width: 80px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.progress {
+  inset: 0;
+  position: absolute;
+  transform-origin: left;
+  background-color: var(--neutral-white);
+  animation: fill 8s linear forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 48em) {
+  .hero {
+    padding: 80px 32px 128px;
+  }
+
+  .slide h1,
+  .slide h2 {
+    font-size: 3.8rem;
+  }
+
+  .controls {
+    left: 32px;
+    right: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .image {
+    animation: none;
+    transition: none;
+  }
+}

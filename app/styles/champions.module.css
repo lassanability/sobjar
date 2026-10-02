@@ -1,0 +1,68 @@
+.section {
+  padding: 56px 16px;
+  background: linear-gradient(135deg, var(--teal-900) 0%, var(--brand-accent-dark) 100%);
+}
+
+.wrapper {
+  gap: 40px;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  max-width: var(--max-content-width);
+}
+
+.intro {
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.copy {
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.medal {
+  min-height: 320px;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--corner-bold);
+  box-shadow: var(--shadow-intense);
+}
+
+.medalImage {
+  object-fit: cover;
+}
+
+.videos {
+  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  justify-items: center;
+}
+
+.videos > * {
+  width: 100%;
+  max-width: 340px;
+}
+
+@media (min-width: 48em) {
+  .section {
+    padding: 96px 32px;
+  }
+
+  .intro {
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .copy,
+  .medal {
+    flex: 1 1 50%;
+  }
+
+  .copy {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,20 @@
+.banner {
+  padding: 64px 16px;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-tertiary) 100%);
+}
+
+.inner {
+  gap: 28px;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+.actions {
+  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -1,0 +1,14 @@
+.article {
+  gap: 20px;
+  display: flex;
+  margin: 0 auto;
+  max-width: 720px;
+  flex-direction: column;
+}
+
+.article p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  text-align: left;
+  font-weight: var(--font-weight-regular);
+}

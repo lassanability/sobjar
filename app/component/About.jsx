@@ -1,6 +1,5 @@
-"use client";
-
 import Image from "next/image";
+import Champions from "@/app/component/Champions";
 import Logo from "@/public/assets/logo.png";
 import AboutImage from "@/public/assets/about.jpg";
 import styles from "@/app/styles/about.module.css";
@@ -20,8 +19,6 @@ import {
   IoHeartOutline,
   IoPeople,
   IoTrophy,
-  IoGlobe,
-  IoSchool,
 } from "react-icons/io5";
 
 const aboutSections = [
@@ -60,27 +57,6 @@ const values = [
     title: "Community Empowerment",
     description:
       "We build strength through unity, supporting each other to overcome historical challenges.",
-  },
-];
-
-const achievements = [
-  {
-    icon: IoTrophy,
-    title: "Excellence Awards",
-    description: "Recognized for outstanding community service",
-    metric: "5+",
-  },
-  {
-    icon: IoGlobe,
-    title: "Community Reach",
-    description: "Serving communities across Alberta",
-    metric: "12 Cities",
-  },
-  {
-    icon: IoSchool,
-    title: "Educational Impact",
-    description: "Students supported in their academic journey",
-    metric: "800+",
   },
 ];
 
@@ -125,18 +101,6 @@ const teamMembers = [
     role: "Executive Director",
     image: LeaderImage,
     description: "Leading community development initiatives",
-  },
-  {
-    name: "Appointment Pending",
-    role: "Youth Coordinator",
-    image: CommunityImage,
-    description: "Empowering the next generation",
-  },
-  {
-    name: "Appointment Pending",
-    role: "Family Support Specialist",
-    image: AboutImage,
-    description: "Supporting families in transition",
   },
 ];
 
@@ -202,7 +166,6 @@ export default function About() {
               sizes="100vw"
               quality={100}
               priority={true}
-              style={{ objectFit: "cover" }}
               className={styles.heroImage}
             />
           </div>
@@ -222,7 +185,6 @@ export default function About() {
                     sizes="100vw"
                     quality={100}
                     priority={true}
-                    style={{ objectFit: "cover" }}
                     className={styles.sectionImage}
                   />
                   <div className={styles.imageOverlay}></div>
@@ -286,30 +248,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className={styles.achievementsSection}>
-        <div className={styles.contentWrapper}>
-          <div className={styles.achievementsHeader}>
-            <h2>Our Achievements</h2>
-          </div>
-          <div className={styles.achievements}>
-            {achievements.map((achievement, index) => (
-              <div key={index} className={styles.achievementCard}>
-                <div className={styles.achievementIconWrapper}>
-                  <achievement.icon
-                    className={styles.achievementIcon}
-                    aria-label="Achievement"
-                  />
-                </div>
-                <h3>{achievement.metric}</h3>
-                <div className={styles.achievementContent}>
-                  <h4>{achievement.title}</h4>
-                  <p>{achievement.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Champions />
 
       <section className={styles.sportsSection}>
         <div className={styles.sportsSectionWrapper}>
@@ -331,7 +270,6 @@ export default function About() {
                   fill
                   sizes="100vw"
                   quality={100}
-                  style={{ objectFit: "cover" }}
                   className={styles.sportImage}
                 />
                 <div className={styles.sportOverlay}>

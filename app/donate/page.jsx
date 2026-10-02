@@ -205,7 +205,7 @@ export default function DonationPage() {
                 onClick={() => setSelectedCause(area.id)}
               >
                 <div className={styles.impactCardHeader}>
-                  <div className={styles.impactIcon} style={{'--impact-color': area.color}}>
+                  <div className={styles.impactIcon} data-color={area.color}>
                     <area.icon />
                   </div>
                   <h3 className={styles.impactTitle}>{area.title}</h3>

@@ -962,3 +962,7 @@
     }
   }
 }
+.impactIcon[data-color="#10b981"] { --impact-color: #10b981; }
+.impactIcon[data-color="#3b82f6"] { --impact-color: #3b82f6; }
+.impactIcon[data-color="#8b5cf6"] { --impact-color: #8b5cf6; }
+.impactIcon[data-color="#f59e0b"] { --impact-color: #f59e0b; }
