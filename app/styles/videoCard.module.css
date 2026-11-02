@@ -1,27 +1,29 @@
 .card {
-  gap: 12px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .video {
   width: 100%;
-  aspect-ratio: 9 / 16;
-  max-height: 560px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  background-color: var(--neutral-black);
-  border-radius: var(--corner-bold);
-  box-shadow: var(--shadow-prominent);
+  background-color: #000;
 }
 
 .card figcaption {
-  gap: 2px;
   display: flex;
   flex-direction: column;
-  color: var(--neutral-white);
+  gap: 2px;
+  padding: 16px 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.card figcaption span {
-  font-size: 0.9rem;
-  color: var(--teal-100);
+.card strong {
+  font-size: 16px;
+  color: var(--white);
 }

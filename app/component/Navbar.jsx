@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { FiMenu as MenuIcon } from "react-icons/fi";
+import { MdOutlineClose as CloseIcon } from "react-icons/md";
+import { IoArrowForward, IoCall, IoChevronDown, IoMail } from "react-icons/io5";
 import LogoImg from "@/public/assets/logo.png";
 import NavSportImage from "@/public/assets/navsport.jpg";
 import NavEventImage from "@/public/assets/navevent.jpg";
 import NavAboutImage from "@/public/assets/navabout.jpg";
-import styles from "@/app/styles/navbar.module.css";
+import { Maple } from "@/app/component/Motifs";
+import { CONTACT } from "@/app/lib/site";
 import { useDrawerStore } from "@/app/store/Drawer";
-import { FiMenu as MenuIcon } from "react-icons/fi";
-import { usePathname, useRouter } from "next/navigation";
-import { MdOutlineClose as CloseIcon } from "react-icons/md";
-import { IoChevronDown as ChevronDown } from "react-icons/io5";
-import { IoAdd as PlusIcon, IoRemove as MinusIcon } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import styles from "@/app/styles/navbar.module.css";
 
 const navItems = [
   {
@@ -71,252 +72,127 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const { isOpen, toggleOpen, setOpen, setClose } = useDrawerStore();
-  const [isMobile, setMobile] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const router = useRouter();
+  const { isOpen, toggleOpen, setClose } = useDrawerStore();
+  const [expanded, setExpanded] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth < 768;
-      setMobile(mobile);
-      if (!mobile) {
-        setClose();
-      }
-    };
+    setClose();
+    setExpanded(null);
+  }, [pathname, setClose]);
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, [setClose]);
+  useEffect(() => {
+    document.body.classList.toggle(styles.locked, isOpen);
+  }, [isOpen]);
 
-  const handleNavItemClick = () => {
-    if (isMobile) {
-      setClose();
-    }
-  };
+  const isCurrent = (href) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
-    <div className={styles.navContainer}>
-      <Link href="/" className={styles.navLogo} aria-label="Sobjar Canada home">
-        <Image
-          src={LogoImg}
-          alt="Sobjar Canada"
-          width={100}
-          priority
-          className={styles.navLogoImg}
-        />
-      </Link>
-
-      {!isMobile && (
-        <div className={styles.navlinksContainer}>
-          {navItems.map((item, index) => (
-            <NavItem
-              key={index}
-              item={item}
-              index={index}
-              isMobile={isMobile}
-              activeDropdown={activeDropdown}
-              setActiveDropdown={setActiveDropdown}
-              pathname={pathname}
-              router={router}
-              onNavItemClick={handleNavItemClick}
-            />
-          ))}
-        </div>
-      )}
-
-      {isMobile && isOpen && (
-        <div className={styles.navlinksContainer}>
-          {navItems.map((item, index) => (
-            <NavItem
-              key={index}
-              item={item}
-              index={index}
-              isMobile={isMobile}
-              activeDropdown={activeDropdown}
-              setActiveDropdown={setActiveDropdown}
-              pathname={pathname}
-              router={router}
-              onNavItemClick={handleNavItemClick}
-            />
-          ))}
-        </div>
-      )}
-
-      <div className={styles.navRightSection}>
-        <Link href="/donate" className={styles.donateButton}>
-          Donate
-        </Link>
-        {isMobile && (
-          <div className={styles.navHamburger}>
-            {isOpen ? (
-              <CloseIcon
-                onClick={toggleOpen}
-                alt="Close"
-                aria-label="Close"
-                className={styles.navIcon}
-              />
-            ) : (
-              <MenuIcon
-                onClick={toggleOpen}
-                alt="Open"
-                aria-label="Open"
-                className={styles.navIcon}
-              />
-            )}
+    <header className={styles.header}>
+      <div className={styles.utility}>
+        <div className={`container ${styles.utilityInner}`}>
+          <span className={styles.utilityTag}>
+            <Maple />
+            Somali Bantu Jareer Weyne Society of Alberta
+          </span>
+          <div className={styles.utilityLinks}>
+            <a href={`tel:${CONTACT.phoneHref}`}>
+              <IoCall aria-hidden="true" /> {CONTACT.phone}
+            </a>
+            <a href={`mailto:${CONTACT.email}`}>
+              <IoMail aria-hidden="true" /> {CONTACT.email}
+            </a>
           </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function NavItem({
-  item,
-  index,
-  isMobile,
-  activeDropdown,
-  setActiveDropdown,
-  pathname,
-  router,
-  onNavItemClick,
-}) {
-  const isActive = activeDropdown === index;
-  const isCurrentPage = pathname === item.href;
-
-  const handleInteraction = () => {
-    if (item.dropdown) {
-      if (isMobile) {
-        setActiveDropdown(isActive ? null : index);
-      } else {
-        router.push(item.href);
-      }
-    } else {
-      if (isMobile) {
-        onNavItemClick();
-      }
-      router.push(item.href);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (!isMobile && item.dropdown) {
-      setActiveDropdown(index);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile) {
-      setActiveDropdown(null);
-    }
-  };
-
-  return (
-    <div
-      className={styles.navItemContainer}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={styles.navItemLinkContainer} onClick={handleInteraction}>
-        <Link
-          href={item.href}
-          className={`${styles.navlinks} ${
-            isCurrentPage ? styles.activeNavLinks : ""
-          }`}
-          onClick={(e) => {
-            if (isMobile && item.dropdown) {
-              e.preventDefault();
-            } else if (!item.dropdown) {
-              onNavItemClick();
-            }
-          }}
-        >
-          {item.name}
-          {item.dropdown && (
-            <>
-              {isMobile ? (
-                isActive ? (
-                  <MinusIcon className={styles.mobileIcon} />
-                ) : (
-                  <PlusIcon className={styles.mobileIcon} />
-                )
-              ) : (
-                <ChevronDown
-                  className={`${styles.chevron} ${
-                    isActive ? styles.chevronOpen : ""
-                  }`}
-                />
-              )}
-            </>
-          )}
-        </Link>
+        </div>
       </div>
 
-      {item.dropdown && isActive && (
-        <Dropdown
-          item={item}
-          setActiveDropdown={setActiveDropdown}
-          isMobile={isMobile}
-          onNavItemClick={onNavItemClick}
-        />
-      )}
-    </div>
-  );
-}
+      <div className={styles.bar}>
+        <div className={`container ${styles.barInner}`}>
+          <Link href="/" className={styles.brand} aria-label="Sobjar Canada home">
+            <Image src={LogoImg} alt="" width={52} height={49} priority className={styles.logo} />
+            <span className={styles.brandText}>
+              <strong>Sobjar Canada</strong>
+              <small>Somali Bantu · Edmonton</small>
+            </span>
+          </Link>
 
-function Dropdown({ item, setActiveDropdown, isMobile, onNavItemClick }) {
-  const handleDropdownItemClick = () => {
-    setActiveDropdown(null);
-    if (isMobile) {
-      onNavItemClick();
-    }
-  };
+          <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ""}`} aria-label="Main">
+            <ul className={styles.list}>
+              {navItems.map((item) => (
+                <li key={item.href} className={`${styles.item} ${item.dropdown ? styles.hasPanel : ""}`}>
+                  <div className={styles.row}>
+                    <Link href={item.href} className={`${styles.link} ${isCurrent(item.href) ? styles.current : ""}`} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                      {item.name}
+                    </Link>
+                    {item.dropdown && (
+                      <button
+                        type="button"
+                        className={`${styles.expand} ${expanded === item.name ? styles.expandOpen : ""}`}
+                        aria-expanded={expanded === item.name}
+                        aria-label={`${item.name} menu`}
+                        onClick={() => setExpanded(expanded === item.name ? null : item.name)}
+                      >
+                        <IoChevronDown aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
 
-  return (
-    <div className={styles.dropdown}>
-      <div className={styles.dropdownContent}>
-        <div className={styles.dropdownInfo}>
-          {item.title && <h2>{item.title}</h2>}
-          {item.description && <p>{item.description}</p>}
-          <div className={styles.dropdownLinks}>
-            {item.dropdown?.map((dropdownItem, dropIndex) => (
-              <Link
-                key={dropIndex}
-                href={dropdownItem.href}
-                className={styles.dropdownItem}
-                onClick={handleDropdownItemClick}
-              >
-                {dropdownItem.name}
+                  {item.dropdown && (
+                    <div className={`${styles.panel} ${expanded === item.name ? styles.panelOpen : ""}`}>
+                      <div className={`container ${styles.panelInner}`}>
+                        <div className={styles.panelInfo}>
+                          <h2>{item.title}</h2>
+                          <p>{item.description}</p>
+                          <Link href={item.href} className={styles.panelMore}>
+                            Explore {item.name.toLowerCase()} <IoArrowForward aria-hidden="true" />
+                          </Link>
+                        </div>
+                        <ul className={styles.panelLinks}>
+                          {item.dropdown.map((link) => (
+                            <li key={link.href}>
+                              <Link href={link.href}>
+                                {link.name}
+                                <IoArrowForward aria-hidden="true" />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                        <figure className={styles.panelFeature}>
+                          <div className={styles.panelImage}>
+                            <Image src={item.image} alt="" fill sizes="280px" />
+                          </div>
+                          <figcaption>
+                            <strong>{item.imageTitle}</strong>
+                            <span>{item.imageDescription}</span>
+                          </figcaption>
+                        </figure>
+                      </div>
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <div className={styles.drawerFoot}>
+              <Link href="/donate" className={styles.donate}>
+                Donate
               </Link>
-            ))}
-            {isMobile && (
-              <Link
-                href={item.href}
-                className={styles.dropdownItem}
-                onClick={handleDropdownItemClick}
-              >
-                See more info
-              </Link>
-            )}
+              <a href={`tel:${CONTACT.phoneHref}`} className={styles.drawerContact}>
+                <IoCall aria-hidden="true" /> {CONTACT.phone}
+              </a>
+            </div>
+          </nav>
+
+          <div className={styles.actions}>
+            <Link href="/donate" className={`${styles.donate} ${styles.donateBar}`}>
+              Donate
+            </Link>
+            <button type="button" className={styles.menu} onClick={toggleOpen} aria-expanded={isOpen} aria-label={isOpen ? "Close menu" : "Open menu"}>
+              {isOpen ? <CloseIcon aria-hidden="true" /> : <MenuIcon aria-hidden="true" />}
+            </button>
           </div>
         </div>
-
-        {item.image && (
-          <div className={styles.dropdownImageContainer}>
-            <Image
-              className={styles.dropdownImage}
-              src={item.image}
-              alt={item.imageTitle || "Dropdown Image"}
-              width={250}
-              height={250}
-            />
-            {item.imageTitle && <h3>{item.imageTitle}</h3>}
-            {item.imageDescription && <p>{item.imageDescription}</p>}
-          </div>
-        )}
       </div>
-    </div>
+      <div className="stripes" aria-hidden="true" />
+    </header>
   );
 }

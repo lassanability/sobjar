@@ -1,20 +1,39 @@
 .banner {
-  padding: 64px 16px;
-  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-tertiary) 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0 104px;
+  background-color: var(--forest-deep);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(7, 51, 29, 0.86);
+  background-image: var(--weave-dark);
 }
 
 .inner {
-  gap: 28px;
+  position: relative;
   display: flex;
-  margin: 0 auto;
-  align-items: center;
   flex-direction: column;
-  max-width: 800px;
+  align-items: center;
+  gap: 32px;
 }
 
 .actions {
-  gap: 12px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 12px;
+}
+
+.rivers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

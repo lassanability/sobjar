@@ -1,318 +1,173 @@
 "use client";
 
 import { useState } from "react";
-import { MdEmail as EmailIcon } from "react-icons/md";
-import { IoCall as PhoneIcon } from "react-icons/io5";
-import { IoLocationOutline as LocationIcon } from "react-icons/io5";
+import { toast } from "sonner";
 import { FaClock as ClockIcon } from "react-icons/fa";
-import Image from "next/image";
-import FacebookLogo from "@/public/assets/facebook.png";
-import WhatsappLogo from "@/public/assets/whatsapp.png";
-import TiktokLogo from "@/public/assets/tiktok.png";
-import YoutubeLogo from "@/public/assets/youtube.png";
+import { MdEmail as EmailIcon } from "react-icons/md";
+import { IoCall as PhoneIcon, IoLocationOutline as LocationIcon, IoLogoFacebook, IoLogoInstagram, IoLogoTiktok, IoLogoWhatsapp, IoLogoYoutube, IoSend } from "react-icons/io5";
+import HomeImage2 from "@/public/assets/home2.jpg";
+import PageHero from "@/app/component/PageHero";
+import Section from "@/app/component/Section";
+import { Eyebrow } from "@/app/component/Motifs";
+import { CONTACT, SOCIALS, WHATSAPP_URL } from "@/app/lib/site";
 import styles from "@/app/styles/contact.module.css";
 
+const EMPTY_FORM = { name: "", email: "", phone: "", subject: "", message: "", inquiryType: "General Inquiry" };
+
+const INQUIRY_TYPES = ["General Inquiry", "Volunteer Opportunities", "Partnership", "Programs & Services", "Donation Information", "Events"];
+
+const socialIcons = {
+  facebook: IoLogoFacebook,
+  instagram: IoLogoInstagram,
+  whatsapp: IoLogoWhatsapp,
+  youtube: IoLogoYoutube,
+  tiktok: IoLogoTiktok,
+};
+
+const contactCards = [
+  { icon: LocationIcon, title: "Our Location", value: CONTACT.address, note: "Serving communities across Alberta" },
+  { icon: PhoneIcon, title: "Phone Number", value: CONTACT.phone, href: `tel:${CONTACT.phoneHref}`, note: "Available Monday to Friday" },
+  { icon: EmailIcon, title: "Email Address", value: CONTACT.email, href: `mailto:${CONTACT.email}`, note: "We respond within 24 hours" },
+  { icon: ClockIcon, title: "Office Hours", value: "Mon - Fri: 9:00 AM - 5:00 PM", note: "Mountain Time" },
+];
+
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-    inquiryType: "general"
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-      inquiryType: "general"
-    });
-  };
-
-  const handleSocialClick = (url) => {
-    window.open(url, "_blank");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const body = [`Name: ${formData.name}`, `Email: ${formData.email}`, formData.phone && `Phone: ${formData.phone}`, `Inquiry: ${formData.inquiryType}`, "", formData.message].filter((line) => line !== false && line !== "").join("\n");
+    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
+    toast.success("Your email app is opening with your message ready to send.");
+    setFormData(EMPTY_FORM);
   };
 
   return (
-    <div className={styles.contactContainer}>
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Get in Touch</h1>
-          <p className={styles.heroSubtitle}>
-            We're here to help and answer any questions you might have. 
-            Reach out to us and we'll respond as soon as we can.
-          </p>
+    <>
+      <PageHero
+        eyebrow="Contact"
+        title="Get in touch"
+        description="We're here to help and answer any questions you might have. Reach out to us and we'll respond as soon as we can."
+        image={HomeImage2}
+        imageAlt="Families sharing a meal at a Sobjar community gathering"
+      />
+
+      <Section>
+        <ul className={styles.cards}>
+          {contactCards.map((card) => (
+            <li key={card.title} className={styles.card}>
+              <span className={styles.cardIcon} aria-hidden="true">
+                <card.icon />
+              </span>
+              <h2>{card.title}</h2>
+              {card.href ? <a href={card.href}>{card.value}</a> : <p className={styles.cardValue}>{card.value}</p>}
+              <small>{card.note}</small>
+            </li>
+          ))}
+        </ul>
+
+        <div className={styles.layout}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.formHead}>
+              <Eyebrow>Send us a message</Eyebrow>
+              <h2>How can we help?</h2>
+              <p>Have a question or want to learn more about our programs? Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
+            </div>
+
+            <div className={styles.row}>
+              <label className={styles.field}>
+                <span>Full name *</span>
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required placeholder="Enter your full name" autoComplete="name" />
+              </label>
+              <label className={styles.field}>
+                <span>Email address *</span>
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required placeholder="Enter your email address" autoComplete="email" />
+              </label>
+            </div>
+
+            <div className={styles.row}>
+              <label className={styles.field}>
+                <span>Phone number</span>
+                <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="Enter your phone number" autoComplete="tel" />
+              </label>
+              <fieldset className={styles.field}>
+                <legend>Inquiry type</legend>
+                <div className={styles.chips}>
+                  {INQUIRY_TYPES.map((type) => (
+                    <label key={type} className={`${styles.chip} ${formData.inquiryType === type ? styles.chipActive : ""}`}>
+                      <input type="radio" name="inquiryType" value={type} checked={formData.inquiryType === type} onChange={handleInputChange} className="visuallyHidden" />
+                      {type}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            </div>
+
+            <label className={styles.field}>
+              <span>Subject *</span>
+              <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required placeholder="Enter the subject of your message" />
+            </label>
+
+            <label className={styles.field}>
+              <span>Message *</span>
+              <textarea name="message" value={formData.message} onChange={handleInputChange} required rows={6} placeholder="Tell us more about your inquiry..." />
+            </label>
+
+            <button type="submit" className={styles.submit}>
+              Send message
+              <IoSend aria-hidden="true" />
+            </button>
+
+            <p className={styles.privacy}>We respect your privacy and will never share your information.</p>
+          </form>
+
+          <aside className={styles.aside}>
+            <div className={styles.visit}>
+              <h2>Visit our office</h2>
+              <p>We welcome visitors to our office in Alberta. Whether you&apos;re interested in volunteering, learning about our programs, or just want to meet our team, we&apos;d love to see you.</p>
+              <address>
+                <span>
+                  <LocationIcon aria-hidden="true" />
+                  {CONTACT.address}
+                </span>
+                <a href={`tel:${CONTACT.phoneHref}`}>
+                  <PhoneIcon aria-hidden="true" />
+                  Call {CONTACT.phone}
+                </a>
+                <a href={`mailto:${CONTACT.email}`}>
+                  <EmailIcon aria-hidden="true" />
+                  {CONTACT.email}
+                </a>
+              </address>
+            </div>
+
+            <div className={styles.social}>
+              <h2>Connect with us</h2>
+              <p>Follow us on social media to stay updated on our latest programs, events, and community initiatives.</p>
+              <div className={styles.socialLinks}>
+                {SOCIALS.map((social) => {
+                  const Icon = socialIcons[social.id];
+                  return (
+                    <a key={social.id} href={social.href} target="_blank" rel="noopener noreferrer">
+                      <Icon aria-hidden="true" />
+                      {social.label}
+                    </a>
+                  );
+                })}
+              </div>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.whatsapp}>
+                <IoLogoWhatsapp aria-hidden="true" />
+                Join our WhatsApp community
+              </a>
+            </div>
+          </aside>
         </div>
-      </section>
-
-      {/* Main Content */}
-      <div className={styles.mainContent}>
-        {/* Contact Info Section */}
-        <section className={`${styles.contactInfoSection} ${styles.fadeInSection}`}>
-          <h2 className={styles.sectionTitle}>Contact Information</h2>
-          <div className={styles.contactInfoGrid}>
-            <div className={styles.contactInfoCard}>
-              <div className={styles.contactIconWrapper}>
-                <LocationIcon className={styles.contactIcon} />
-              </div>
-              <div className={styles.contactDetails}>
-                <h3>Our Location</h3>
-                <p>12607 124 Street, Edmonton, Alberta T5L 0N8</p>
-                <p className={styles.contactNote}>Serving communities across Alberta</p>
-              </div>
-            </div>
-
-            <div className={styles.contactInfoCard}>
-              <div className={styles.contactIconWrapper}>
-                <PhoneIcon className={styles.contactIcon} />
-              </div>
-              <div className={styles.contactDetails}>
-                <h3>Phone Number</h3>
-                <p>(+1) 780-200-6752</p>
-                <p className={styles.contactNote}>Available Monday to Friday</p>
-              </div>
-            </div>
-
-            <div className={styles.contactInfoCard}>
-              <div className={styles.contactIconWrapper}>
-                <EmailIcon className={styles.contactIcon} />
-              </div>
-              <div className={styles.contactDetails}>
-                <h3>Email Address</h3>
-                <p>sobjar12@gmail.com</p>
-                <p className={styles.contactNote}>We respond within 24 hours</p>
-              </div>
-            </div>
-
-            <div className={styles.contactInfoCard}>
-              <div className={styles.contactIconWrapper}>
-                <ClockIcon className={styles.contactIcon} />
-              </div>
-              <div className={styles.contactDetails}>
-                <h3>Office Hours</h3>
-                <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
-                <p className={styles.contactNote}>Mountain Standard Time</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section */}
-        <section className={`${styles.contactFormSection} ${styles.fadeInSection}`}>
-          <div className={styles.contactFormContainer}>
-            <div className={styles.formIntro}>
-              <h2 className={styles.sectionTitle}>Send Us a Message</h2>
-              <p className={styles.formDescription}>
-                Have a question or want to learn more about our programs? 
-                Fill out the form below and we'll get back to you as soon as possible.
-              </p>
-            </div>
-
-            <form className={styles.contactForm} onSubmit={handleSubmit}>
-              <div className={styles.formRow}>
-                <div className={styles.inputGroup}>
-                  <label htmlFor="name" className={styles.inputLabel}>Full Name *</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className={styles.formInput}
-                    required
-                    placeholder="Enter your full name"
-                  />
-                </div>
-
-                <div className={styles.inputGroup}>
-                  <label htmlFor="email" className={styles.inputLabel}>Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className={styles.formInput}
-                    required
-                    placeholder="Enter your email address"
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formRow}>
-                <div className={styles.inputGroup}>
-                  <label htmlFor="phone" className={styles.inputLabel}>Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className={styles.formInput}
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-
-                <div className={styles.inputGroup}>
-                  <label htmlFor="inquiryType" className={styles.inputLabel}>Inquiry Type</label>
-                  <select
-                    id="inquiryType"
-                    name="inquiryType"
-                    value={formData.inquiryType}
-                    onChange={handleInputChange}
-                    className={styles.formSelect}
-                  >
-                    <option value="general">General Inquiry</option>
-                    <option value="volunteer">Volunteer Opportunities</option>
-                    <option value="partnership">Partnership</option>
-                    <option value="programs">Programs & Services</option>
-                    <option value="donation">Donation Information</option>
-                    <option value="events">Events</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className={styles.inputGroup}>
-                <label htmlFor="subject" className={styles.inputLabel}>Subject *</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  className={styles.formInput}
-                  required
-                  placeholder="Enter the subject of your message"
-                />
-              </div>
-
-              <div className={styles.inputGroup}>
-                <label htmlFor="message" className={styles.inputLabel}>Message *</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className={styles.formTextarea}
-                  required
-                  rows="6"
-                  placeholder="Tell us more about your inquiry..."
-                ></textarea>
-              </div>
-
-              <button type="submit" className={styles.submitButton}>
-                Send Message
-              </button>
-
-              <p className={styles.privacyNote}>
-                By submitting this form, you agree to our privacy policy. 
-                We respect your privacy and will never share your information.
-              </p>
-            </form>
-          </div>
-        </section>
-
-        {/* Social Media Section */}
-        <section className={`${styles.socialMediaSection} ${styles.fadeInSection}`}>
-          <h2 className={styles.sectionTitle}>Connect With Us</h2>
-          <p className={styles.socialDescription}>
-            Follow us on social media to stay updated on our latest programs, 
-            events, and community initiatives.
-          </p>
-          
-          <div className={styles.socialGrid}>
-            <div className={styles.socialCard} onClick={() => handleSocialClick("https://m.facebook.com/SobjarCanada/")}>
-              <Image 
-                src={FacebookLogo} 
-                alt="Facebook" 
-                width={60} 
-                height={60}
-                className={styles.socialImage}
-              />
-            </div>
-
-            <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.tiktok.com/@sobjarstar5?_r=1&_t=ZS-94aBnEIQlCJ")}>
-              <Image 
-                src={TiktokLogo} 
-                alt="TikTok" 
-                width={60} 
-                height={60}
-                className={styles.socialImage}
-              />
-            </div>
-
-            <div className={styles.socialCard} onClick={() => handleSocialClick("https://chat.whatsapp.com/CnjBdL4RvVT7raFaJHml88")}>
-              <Image 
-                src={WhatsappLogo} 
-                alt="WhatsApp" 
-                width={60} 
-                height={60}
-                className={styles.socialImage}
-              />
-            </div>
-
-            <div className={styles.socialCard} onClick={() => handleSocialClick("https://www.youtube.com/channel/UCquX1JwHrF0_ijoCIZGuwhA")}>
-              <Image 
-                src={YoutubeLogo} 
-                alt="YouTube" 
-                width={60} 
-                height={60}
-                className={styles.socialImage}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Visit Us Section */}
-        <section className={`${styles.visitSection} ${styles.fadeInSection}`}>
-          <div className={styles.visitContent}>
-            <div className={styles.visitInfo}>
-              <h2 className={styles.sectionTitle}>Visit Our Office</h2>
-              <p className={styles.visitDescription}>
-                We welcome visitors to our office in Alberta. Whether you're interested 
-                in volunteering, learning about our programs, or just want to meet our team, 
-                we'd love to see you.
-              </p>
-              
-              <div className={styles.visitDetails}>
-                <div className={styles.visitItem}>
-                  <LocationIcon className={styles.visitIcon} />
-                  <div>
-                    <h4>Address</h4>
-                    <p>12607 124 Street, Edmonton, Alberta T5L 0N8</p>
-                  </div>
-                </div>
-                
-                <div className={styles.visitItem}>
-                  <PhoneIcon className={styles.visitIcon} />
-                  <div>
-                    <h4>Schedule a Visit</h4>
-                    <p>Call us at (+1) 780-200-6752</p>
-                    <p>or email sobjar12@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </section>
-      </div>
-    </div>
+      </Section>
+    </>
   );
 }

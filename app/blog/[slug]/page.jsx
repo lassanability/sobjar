@@ -32,7 +32,8 @@ export default async function BlogPostPage({ params }) {
     description: post.excerpt,
     datePublished: post.date,
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-    image: absoluteUrl("/assets/medal.jpeg"),
+    image: absoluteUrl(post.image.src),
+    dateModified: post.date,
     author: { "@type": "Organization", name: SITE_NAME },
     publisher: { "@type": "Organization", name: SITE_NAME, logo: { "@type": "ImageObject", url: absoluteUrl("/assets/logo.png") } },
   };

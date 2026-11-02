@@ -3,7 +3,6 @@ export const SITE_NAME = "Sobjar Canada";
 export const SITE_TAGLINE = "Supporting Somali Bantu youth and families in Alberta";
 export const SITE_DESCRIPTION =
   "Sobjar Canada is a non-profit serving the Somali Bantu Jareer/weyne community in Alberta through education, advocacy, youth sports and community support.";
-export const BANNER_URL = `${SITE_URL}/assets/banner.png`;
 
 export const CONTACT = {
   email: "sobjar12@gmail.com",
@@ -44,7 +43,7 @@ export function pageMetadata({ title, description, path }) {
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: "website", images: [BANNER_URL] },
-    twitter: { card: "summary_large_image", title, description, images: [BANNER_URL] },
+    openGraph: { title, description, url, type: "website", siteName: SITE_NAME, locale: "en_CA" },
+    twitter: { card: "summary_large_image", title, description },
   };
 }

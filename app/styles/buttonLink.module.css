@@ -1,45 +1,74 @@
 .button {
-  gap: 8px;
   display: inline-flex;
-  padding: 14px 28px;
-  font-size: 1rem;
   align-items: center;
-  border-radius: 999px;
   justify-content: center;
-  width: fit-content;
-  border: 2px solid transparent;
-  transition: var(--transition-normal);
-  font-weight: var(--font-weight-semibold);
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: var(--radius-pill);
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1.5px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(3px);
 }
 
 .primary {
-  color: var(--neutral-white);
-  background-color: var(--brand-primary);
+  color: var(--white);
+  background-color: var(--green);
 }
 
 .primary:hover {
-  color: var(--neutral-white);
-  background-color: var(--brand-accent-dark);
-  box-shadow: var(--shadow-brand);
+  background-color: var(--forest);
+}
+
+.gold {
+  color: var(--forest-deep);
+  background-color: var(--gold);
+}
+
+.gold:hover {
+  background-color: #f7c24a;
 }
 
 .light {
-  color: var(--brand-accent-dark);
-  background-color: var(--neutral-white);
+  color: var(--forest-deep);
+  background-color: var(--white);
 }
 
 .light:hover {
-  color: var(--brand-primary);
-  background-color: var(--brand-accent-lighter);
+  background-color: var(--gold-soft);
 }
 
 .outline {
-  color: var(--neutral-white);
-  border-color: var(--neutral-white);
-  background-color: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .outline:hover {
-  color: var(--brand-primary);
-  background-color: var(--neutral-white);
+  border-color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ghost {
+  color: var(--forest-deep);
+  border-color: var(--line);
+  background-color: var(--white);
+}
+
+.ghost:hover {
+  border-color: var(--green);
+  color: var(--green);
 }

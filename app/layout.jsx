@@ -1,19 +1,26 @@
 import { Toaster } from "sonner";
 import "@/app/styles/global.css";
-import { Inter } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import Navbar from "@/app/component/Navbar";
 import Footer from "@/app/component/Footer";
-import { BANNER_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/app/lib/site";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/app/lib/site";
 
 const inter = Inter({
   display: "swap",
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const fraunces = Fraunces({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  weight: ["500", "600", "700"],
 });
 
 export const viewport = {
-  themeColor: "#009077",
+  themeColor: "#0b4d2c",
 };
 
 export const metadata = {
@@ -30,11 +37,22 @@ export const metadata = {
     "Sobjar Star FC",
     "Somali Bantu",
     "Jareer Weyne",
+    "Somali Bantu Edmonton",
+    "Somali Bantu Canada",
+    "Jareer Weyne Society of Alberta",
     "Edmonton non-profit",
+    "Edmonton charity",
     "Alberta youth soccer",
+    "Edmonton youth programs",
     "newcomer support Alberta",
+    "refugee family support Edmonton",
+    "African community Edmonton",
     "donate",
   ],
+  category: "nonprofit",
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  formatDetection: { telephone: false, email: false, address: false },
   openGraph: {
     type: "website",
     locale: "en_CA",
@@ -42,13 +60,11 @@ export const metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
-    images: [{ url: BANNER_URL, width: 1200, height: 630, alt: `${SITE_NAME} banner` }],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: [BANNER_URL],
   },
   robots: {
     index: true,
@@ -74,13 +90,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-CA">
-      <body className={inter.variable}>
+      <body className={`${inter.variable} ${fraunces.variable}`}>
         <Toaster position="top-center" richColors toastOptions={{ className: "toast" }} />
-        <main className="app">
+        <div className="app">
           <Navbar />
-          {children}
+          <main id="content">{children}</main>
           <Footer />
-        </main>
+        </div>
       </body>
     </html>
   );

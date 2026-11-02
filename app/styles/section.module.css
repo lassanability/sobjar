@@ -1,25 +1,37 @@
 .section {
-  padding: 56px 16px;
-}
-
-.white {
-  background-color: var(--neutral-white);
-}
-
-.tint {
-  background-color: var(--background-secondary);
+  padding: 64px 0;
 }
 
 .inner {
-  gap: 40px;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
-  max-width: var(--max-content-width);
+  gap: 40px;
+}
+
+.white {
+  background-color: var(--white);
+}
+
+.paper {
+  background-color: var(--paper);
+}
+
+.weave {
+  background-color: var(--paper);
+  background-image: var(--weave);
+}
+
+.forest {
+  background-color: var(--forest-deep);
+  background-image: var(--weave-dark);
 }
 
 @media (min-width: 48em) {
   .section {
-    padding: 88px 32px;
+    padding: 96px 0;
+  }
+
+  .inner {
+    gap: 56px;
   }
 }

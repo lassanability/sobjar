@@ -1,11 +1,10 @@
 .hero {
-  display: flex;
-  overflow: hidden;
   position: relative;
-  min-height: 460px;
-  padding: 80px 16px 56px;
+  display: flex;
   align-items: flex-end;
-  background-color: var(--teal-900);
+  min-height: 420px;
+  overflow: hidden;
+  background-color: var(--forest-deep);
 }
 
 .image {
@@ -13,57 +12,66 @@
 }
 
 .overlay {
-  inset: 0;
   position: absolute;
-  background: linear-gradient(180deg, rgba(19, 78, 74, 0.55) 0%, rgba(19, 78, 74, 0.92) 100%);
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 51, 29, 0.3) 0%, rgba(7, 51, 29, 0.92) 88%), linear-gradient(90deg, rgba(7, 51, 29, 0.55), transparent 70%);
 }
 
 .content {
-  gap: 20px;
-  z-index: 1;
-  width: 100%;
+  position: relative;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
-  max-width: var(--max-content-width);
-  color: var(--neutral-white);
-}
-
-.eyebrow {
-  width: fit-content;
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background-color: rgba(255, 255, 255, 0.18);
+  gap: 16px;
+  padding-top: 96px;
+  padding-bottom: 56px;
 }
 
 .content h1 {
-  font-weight: 800;
-  font-size: 2.2rem;
+  max-width: 820px;
+  font-size: 36px;
+  color: var(--white);
 }
 
 .content p {
-  max-width: 62ch;
-  text-align: left;
-  font-size: 1.05rem;
-  color: var(--teal-100);
+  max-width: 640px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.withStats .content {
+  padding-bottom: 88px;
+}
+
+.stats {
+  position: relative;
+  margin-top: -40px;
+}
+
+.stats dl {
+  box-shadow: var(--shadow-md);
 }
 
 .actions {
-  gap: 12px;
   display: flex;
   flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 @media (min-width: 48em) {
   .hero {
-    min-height: 560px;
-    padding: 96px 32px 72px;
+    min-height: 500px;
+  }
+
+  .content {
+    padding-bottom: 72px;
+  }
+
+  .withStats .content {
+    padding-bottom: 104px;
   }
 
   .content h1 {
-    font-size: 3.6rem;
+    font-size: 52px;
   }
 }

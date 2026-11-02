@@ -7,8 +7,8 @@ export default function manifest() {
     scope: '/',
     display: 'standalone',
     
-    background_color: '#F0F6F4',
-    theme_color: '#009077',
+    background_color: '#FAF8F2',
+    theme_color: '#0B4D2C',
     categories: ['youth', "community", "ngo", 'sports'],
     
     icons: [

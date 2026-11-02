@@ -1,0 +1,69 @@
+.rivers {
+  display: block;
+  width: 100%;
+  height: 72px;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.jubba,
+.shabelle {
+  stroke-width: 2.5;
+  stroke-dasharray: 6 10;
+  animation: flow 28s linear infinite;
+}
+
+.jubba {
+  stroke: var(--sky);
+}
+
+.shabelle {
+  stroke: var(--gold);
+  animation-duration: 36s;
+}
+
+.light .jubba {
+  stroke: rgba(255, 255, 255, 0.55);
+}
+
+.light .shabelle {
+  stroke: rgba(242, 176, 30, 0.8);
+}
+
+.maple {
+  flex-shrink: 0;
+  color: var(--maple);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.eyebrowLight {
+  color: var(--gold);
+}
+
+.eyebrowLight .maple {
+  color: var(--white);
+}
+
+.dot {
+  width: 18px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--green) 0 40%, var(--gold) 40% 60%, var(--sky) 60%);
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -320;
+  }
+}

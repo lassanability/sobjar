@@ -1,30 +1,22 @@
-"use client";
-
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import styles from "@/app/styles/notfound.module.css";
+import ButtonLink from "@/app/component/ButtonLink";
+import { Rivers } from "@/app/component/Motifs";
 import NotFoundImage from "@/public/assets/notfound.png";
-
-import { MdKeyboardDoubleArrowRight as BackIcon } from "react-icons/md";
+import styles from "@/app/styles/notfound.module.css";
 
 export default function NotFound() {
-  const router = useRouter();
-
-  const goBack = () => {
-      router.push("/"); 
-    
-  };
-
   return (
-    <div className={styles.notFound}>
-      <Image
-        className={styles.notFoundImg}
-        src={NotFoundImage}
-        height={240}
-        alt="Not found image"
-        priority={true}
-      />
-      <h1>Page your looking for has been moved or doesn't exist</h1>
-    </div>
+    <section className={styles.notFound}>
+      <div className={`container ${styles.inner}`}>
+        <Image className={styles.image} src={NotFoundImage} height={220} alt="" priority />
+        <h1>This page has moved or doesn&apos;t exist</h1>
+        <p>Let&apos;s get you back to the community.</p>
+        <div className={styles.actions}>
+          <ButtonLink href="/" variant="primary">Back to home</ButtonLink>
+          <ButtonLink href="/contact" variant="ghost">Contact us</ButtonLink>
+        </div>
+      </div>
+      <Rivers />
+    </section>
   );
 }

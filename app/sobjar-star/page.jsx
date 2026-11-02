@@ -99,7 +99,7 @@ export default function SobjarStarPage() {
         image={SportHeroImage}
         imageAlt="Sobjar Star FC players and supporters"
       >
-        <ButtonLink href="#champions" variant="light">See our win</ButtonLink>
+        <ButtonLink href="#champions" variant="gold">See our win</ButtonLink>
         <ButtonLink href={WHATSAPP_URL} variant="outline" external>Join the community</ButtonLink>
       </PageHero>
 
@@ -107,7 +107,7 @@ export default function SobjarStarPage() {
         <Champions showLink={false} />
       </div>
 
-      <Section tone="tint">
+      <Section tone="paper">
         <SectionHeader
           tag="Season 2026"
           title="Alberta Soccer Provincials"
@@ -116,7 +116,7 @@ export default function SobjarStarPage() {
         <StatList items={facts} />
         <div className={grid.grid}>
           {groupStage.map((opponent) => (
-            <InfoCard key={opponent} icon={IoTrophy} title={`Win vs ${opponent}`}>
+            <InfoCard key={opponent} icon={IoTrophy} tone="gold" title={`Win vs ${opponent}`}>
               Group stage win at the 2026 Provincials.
             </InfoCard>
           ))}
@@ -130,15 +130,15 @@ export default function SobjarStarPage() {
           description="Sobjar Star is part of Sobjar Canada's mission to support Somali Bantu youth and families in Alberta."
         />
         <div className={grid.grid}>
-          {reasons.map((reason) => (
-            <InfoCard key={reason.title} icon={reason.icon} title={reason.title}>
+          {reasons.map((reason, index) => (
+            <InfoCard key={reason.title} icon={reason.icon} title={reason.title} tone={["green", "gold", "sky"][index]}>
               {reason.text}
             </InfoCard>
           ))}
         </div>
       </Section>
 
-      <Section tone="tint">
+      <Section tone="weave">
         <SectionHeader tag="Gallery" title="Life with Sobjar Star" />
         <Gallery items={gallery} />
       </Section>
@@ -147,8 +147,9 @@ export default function SobjarStarPage() {
         tag="Be part of it"
         title="Cheer us on, play with us, or back the team"
         description="Follow Sobjar Star for match updates, or support the programs that keep youth on the pitch."
+        image={SportImage8}
       >
-        <ButtonLink href={WHATSAPP_URL} variant="light" external>Join on WhatsApp</ButtonLink>
+        <ButtonLink href={WHATSAPP_URL} variant="gold" external>Join on WhatsApp</ButtonLink>
         <ButtonLink href="/donate" variant="outline">Support the team</ButtonLink>
       </CtaBanner>
     </>

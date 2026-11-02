@@ -1,68 +1,79 @@
 .section {
-  padding: 56px 16px;
-  background: linear-gradient(135deg, var(--teal-900) 0%, var(--brand-accent-dark) 100%);
+  padding: 72px 0;
+  background-color: var(--forest);
+  background-image: radial-gradient(circle at 10% 10%, rgba(65, 137, 221, 0.18), transparent 40%), var(--weave-dark);
 }
 
 .wrapper {
-  gap: 40px;
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
-  max-width: var(--max-content-width);
+  gap: 48px;
 }
 
 .intro {
-  gap: 32px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 40px;
+  align-items: center;
 }
 
 .copy {
-  gap: 24px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+.copy dl {
+  width: 100%;
 }
 
 .medal {
-  min-height: 320px;
-  overflow: hidden;
   position: relative;
-  border-radius: var(--corner-bold);
-  box-shadow: var(--shadow-intense);
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  outline: 6px solid rgba(242, 176, 30, 0.35);
+  outline-offset: -6px;
 }
 
 .medalImage {
   object-fit: cover;
 }
 
-.videos {
-  gap: 24px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  justify-items: center;
+.badge {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  color: var(--forest-deep);
+  background-color: var(--gold);
 }
 
-.videos > * {
-  width: 100%;
-  max-width: 340px;
+.videos {
+  display: grid;
+  gap: 20px;
 }
 
 @media (min-width: 48em) {
+  .videos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 64em) {
   .section {
-    padding: 96px 32px;
+    padding: 104px 0;
   }
 
   .intro {
-    align-items: stretch;
-    flex-direction: row;
-  }
-
-  .copy,
-  .medal {
-    flex: 1 1 50%;
-  }
-
-  .copy {
-    justify-content: center;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 64px;
   }
 }

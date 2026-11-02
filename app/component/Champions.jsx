@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { IoTrophy } from "react-icons/io5";
 import MedalImage from "@/public/assets/medal.jpeg";
 import ButtonLink from "@/app/component/ButtonLink";
 import SectionHeader from "@/app/component/SectionHeader";
@@ -20,8 +21,8 @@ const videos = [
 
 export default function Champions({ showLink = true }) {
   return (
-    <section className={styles.section} aria-labelledby="champions-title">
-      <div className={styles.wrapper}>
+    <section className={styles.section} aria-label="Sobjar Star FC provincial silver">
+      <div className={`container ${styles.wrapper}`}>
         <div className={styles.intro}>
           <div className={styles.copy}>
             <SectionHeader
@@ -33,19 +34,17 @@ export default function Champions({ showLink = true }) {
             />
             <StatList light items={stats} />
             {showLink && (
-              <ButtonLink href={TEAM.path} variant="light">
+              <ButtonLink href={TEAM.path} variant="gold" arrow>
                 Meet the team
               </ButtonLink>
             )}
           </div>
           <div className={styles.medal}>
-            <Image
-              src={MedalImage}
-              alt="Alberta Soccer 2026 Provincial Championships medals laid out on the grass"
-              fill
-              sizes="(max-width: 48em) 100vw, 40vw"
-              className={styles.medalImage}
-            />
+            <Image src={MedalImage} alt="Alberta Soccer 2026 Provincial Championships medals laid out on the grass" fill sizes="(max-width: 64em) 100vw, 40vw" className={styles.medalImage} />
+            <span className={styles.badge}>
+              <IoTrophy aria-hidden="true" />
+              {TEAM.honour}
+            </span>
           </div>
         </div>
         <div className={styles.videos}>

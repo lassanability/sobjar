@@ -1,39 +1,48 @@
 .list {
-  gap: 12px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  border-radius: var(--radius-md);
+  background-color: var(--line);
+  border: 1px solid var(--line);
 }
 
 .item {
-  gap: 4px;
   display: flex;
-  padding: 16px;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: var(--corner-prominent);
-  background-color: var(--background-accent);
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 20px;
+  background-color: var(--white);
 }
 
 .item dd {
-  font-weight: 800;
-  font-size: 1.5rem;
-  color: var(--brand-primary);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--forest-deep);
 }
 
 .item dt {
-  font-size: 0.9rem;
-  color: var(--neutral-medium-gray);
+  font-size: 14px;
+  color: var(--ink-3);
+}
+
+.light {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .light .item {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(7, 51, 29, 0.6);
 }
 
-.light .item dd {
-  color: var(--neutral-white);
+.light dd {
+  color: var(--gold);
 }
 
-.light .item dt {
-  color: var(--teal-100);
+.light dt {
+  color: rgba(255, 255, 255, 0.75);
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { MdPause, MdPlayArrow } from "react-icons/md";
 import ButtonLink from "@/app/component/ButtonLink";
+import { Eyebrow, Rivers } from "@/app/component/Motifs";
 import MedalImage from "@/public/assets/medal.jpeg";
 import HomeImage1 from "@/public/assets/home1.jpg";
 import HomeImage2 from "@/public/assets/home2.jpg";
@@ -71,57 +72,64 @@ export default function HomeHero() {
 
   return (
     <section className={styles.hero} aria-roledescription="carousel" aria-label="Sobjar highlights">
-      {slides.map((item, slideIndex) => (
-        <Image
-          key={item.title}
-          src={item.image}
-          alt=""
-          fill
-          sizes="100vw"
-          priority={slideIndex === 0}
-          className={`${styles.image} ${slideIndex === index ? styles.imageActive : ""}`}
-        />
-      ))}
-      <div className={styles.overlay} />
+      <div className={`container ${styles.inner}`}>
+        <div className={styles.copy} aria-live={playing ? "off" : "polite"}>
+          <div key={slide.title} className={styles.slide}>
+            <Eyebrow light canada>
+              {slide.accent}
+            </Eyebrow>
+            {index === 0 ? <h1>{slide.title}</h1> : <h2>{slide.title}</h2>}
+            <p>{slide.description}</p>
+            <div className={styles.actions}>
+              <ButtonLink href={slide.cta.href} variant="gold" arrow>
+                {slide.cta.label}
+              </ButtonLink>
+              <ButtonLink href="/donate" variant="outline">
+                Donate
+              </ButtonLink>
+            </div>
+          </div>
 
-      <div className={styles.content} aria-live={playing ? "off" : "polite"}>
-        <div key={slide.title} className={styles.slide}>
-          <span className={styles.accent}>{slide.accent}</span>
-          {index === 0 ? <h1>{slide.title}</h1> : <h2>{slide.title}</h2>}
-          <p>{slide.description}</p>
-          <ButtonLink href={slide.cta.href} variant="light">
-            {slide.cta.label}
-          </ButtonLink>
+          <div className={styles.controls}>
+            <button type="button" className={styles.toggle} onClick={() => setPlaying((value) => !value)} aria-label={playing ? "Pause slideshow" : "Play slideshow"}>
+              {playing ? <MdPause aria-hidden="true" /> : <MdPlayArrow aria-hidden="true" />}
+            </button>
+            {slides.map((item, slideIndex) => (
+              <button
+                type="button"
+                key={item.title}
+                className={styles.indicator}
+                onClick={() => setIndex(slideIndex)}
+                aria-label={`Show slide ${slideIndex + 1}: ${item.title}`}
+                aria-current={slideIndex === index}
+              >
+                {slideIndex === index && <span key={`${index}-${playing}`} className={`${styles.progress} ${playing ? "" : styles.paused}`} onAnimationEnd={next} />}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.visual}>
+          <div className={styles.frame}>
+            {slides.map((item, slideIndex) => (
+              <Image
+                key={item.title}
+                src={item.image}
+                alt=""
+                fill
+                sizes="(max-width: 64em) 100vw, 55vw"
+                priority={slideIndex === 0}
+                className={`${styles.image} ${slideIndex === index ? styles.imageActive : ""}`}
+              />
+            ))}
+            <span className={styles.count} aria-hidden="true">
+              {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+            </span>
+          </div>
         </div>
       </div>
-
-      <div className={styles.controls}>
-        <button
-          type="button"
-          className={styles.toggle}
-          onClick={() => setPlaying((value) => !value)}
-          aria-label={playing ? "Pause slideshow" : "Play slideshow"}
-        >
-          {playing ? <MdPause aria-hidden="true" /> : <MdPlayArrow aria-hidden="true" />}
-        </button>
-        {slides.map((item, slideIndex) => (
-          <button
-            type="button"
-            key={item.title}
-            className={styles.indicator}
-            onClick={() => setIndex(slideIndex)}
-            aria-label={`Show slide ${slideIndex + 1}: ${item.title}`}
-            aria-current={slideIndex === index}
-          >
-            {slideIndex === index && (
-              <span
-                key={`${index}-${playing}`}
-                className={`${styles.progress} ${playing ? "" : styles.paused}`}
-                onAnimationEnd={next}
-              />
-            )}
-          </button>
-        ))}
+      <div className={styles.rivers}>
+        <Rivers light />
       </div>
     </section>
   );

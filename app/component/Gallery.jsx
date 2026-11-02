@@ -6,13 +6,10 @@ export default function Gallery({ items }) {
     <ul className={styles.grid}>
       {items.map((item) => (
         <li key={item.alt} className={styles.item}>
-          <Image
-            src={item.image}
-            alt={item.alt}
-            fill
-            sizes="(max-width: 48em) 50vw, 25vw"
-            className={styles.image}
-          />
+          <Image src={item.image} alt={item.alt} fill sizes="(max-width: 48em) 50vw, 25vw" className={styles.image} />
+          <span className={styles.caption} aria-hidden="true">
+            {item.alt}
+          </span>
         </li>
       ))}
     </ul>

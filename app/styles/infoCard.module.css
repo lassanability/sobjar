@@ -1,26 +1,47 @@
 .card {
-  gap: 12px;
   display: flex;
-  padding: 24px;
   flex-direction: column;
-  border: var(--border-thin);
-  border-radius: var(--corner-bold);
-  background-color: var(--background-card);
+  gap: 12px;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background-color: var(--white);
+  border: 1px solid var(--line);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
 }
 
 .icon {
+  display: grid;
+  place-items: center;
   width: 48px;
   height: 48px;
-  display: flex;
-  font-size: 1.5rem;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--corner-prominent);
-  color: var(--brand-primary);
-  background-color: var(--brand-accent-lighter);
+  font-size: 22px;
+  border-radius: 14px;
+}
+
+.green .icon {
+  color: var(--green);
+  background-color: var(--green-soft);
+}
+
+.gold .icon {
+  color: var(--gold-deep);
+  background-color: var(--gold-soft);
+}
+
+.sky .icon {
+  color: var(--sky);
+  background-color: var(--sky-soft);
+}
+
+.card h3 {
+  font-size: 20px;
 }
 
 .card p {
-  text-align: left;
-  color: var(--neutral-medium-gray);
+  font-size: 15px;
 }

@@ -1,21 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MdEmail as EmailIcon } from "react-icons/md";
-import { IoCall as PhoneIcon, IoLocationOutline as LocationIcon } from "react-icons/io5";
-import InstagramLogo from "@/public/assets/instagram.png";
-import FacebookLogo from "@/public/assets/facebook.png";
-import WhatsappLogo from "@/public/assets/whatsapp.png";
-import TiktokLogo from "@/public/assets/tiktok.png";
-import YoutubeLogo from "@/public/assets/youtube.png";
+import { IoCall, IoLocationOutline, IoLogoFacebook, IoLogoInstagram, IoLogoTiktok, IoLogoWhatsapp, IoLogoYoutube, IoMail } from "react-icons/io5";
+import LogoImg from "@/public/assets/logo.png";
+import ButtonLink from "@/app/component/ButtonLink";
+import { Rivers } from "@/app/component/Motifs";
 import { CONTACT, SITE_NAME, SOCIALS } from "@/app/lib/site";
 import styles from "@/app/styles/footer.module.css";
 
-const socialLogos = {
-  facebook: FacebookLogo,
-  instagram: InstagramLogo,
-  whatsapp: WhatsappLogo,
-  youtube: YoutubeLogo,
-  tiktok: TiktokLogo,
+const socialIcons = {
+  facebook: IoLogoFacebook,
+  instagram: IoLogoInstagram,
+  whatsapp: IoLogoWhatsapp,
+  youtube: IoLogoYoutube,
+  tiktok: IoLogoTiktok,
 };
 
 const linkGroups = [
@@ -44,77 +41,81 @@ const linkGroups = [
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footerContent}>
-        <div className={styles.footerGrid}>
-          <div className={styles.footerSection}>
-            <h4>{SITE_NAME}</h4>
-            <p className={styles.organizationDescription}>
-              A non-profit community organization supporting Somali Bantu families, youth and
-              newcomers in Alberta through education, advocacy and community services.
+      <div className="stripes" aria-hidden="true" />
+      <div className={styles.body}>
+        <div className={`container ${styles.callout}`}>
+          <div>
+            <h2>From the Jubba valley to Alberta, we rise together.</h2>
+            <p>Stand with Somali Bantu youth and families building their future in Canada.</p>
+          </div>
+          <div className={styles.calloutActions}>
+            <ButtonLink href="/donate" variant="gold">Donate</ButtonLink>
+            <ButtonLink href="/getInvolved#volunteer" variant="outline">Volunteer</ButtonLink>
+          </div>
+        </div>
+
+        <Rivers light />
+
+        <div className={`container ${styles.grid}`}>
+          <div className={styles.about}>
+            <Link href="/" className={styles.brand}>
+              <Image src={LogoImg} alt="" width={56} height={53} className={styles.logo} />
+              <span>
+                <strong>{SITE_NAME}</strong>
+                <small>Somali Bantu Jareer Weyne Society of Alberta</small>
+              </span>
+            </Link>
+            <p>
+              A non-profit community organization supporting Somali Bantu families, youth and newcomers in Alberta through education, advocacy and community services.
             </p>
-            <address className={styles.contactInfo}>
-              <div className={styles.contactItem}>
-                <LocationIcon className={styles.contactIcon} aria-hidden="true" />
-                <p>{CONTACT.address}</p>
-              </div>
-              <div className={styles.contactItem}>
-                <PhoneIcon className={styles.contactIcon} aria-hidden="true" />
-                <a href={`tel:${CONTACT.phoneHref}`}>{CONTACT.phone}</a>
-              </div>
-              <div className={styles.contactItem}>
-                <EmailIcon className={styles.contactIcon} aria-hidden="true" />
-                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-              </div>
+            <address className={styles.contact}>
+              <span>
+                <IoLocationOutline aria-hidden="true" />
+                {CONTACT.address}
+              </span>
+              <a href={`tel:${CONTACT.phoneHref}`}>
+                <IoCall aria-hidden="true" />
+                {CONTACT.phone}
+              </a>
+              <a href={`mailto:${CONTACT.email}`}>
+                <IoMail aria-hidden="true" />
+                {CONTACT.email}
+              </a>
             </address>
           </div>
 
           {linkGroups.map((group) => (
-            <nav key={group.title} className={styles.footerSection} aria-label={group.title}>
-              <h4>{group.title}</h4>
-              <div className={styles.footerLinksContainer}>
-                {group.links.map((link) => (
-                  <Link key={link.href} href={link.href} className={styles.footerLink}>
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
+            <nav key={group.title} className={styles.links} aria-label={group.title}>
+              <h3>{group.title}</h3>
+              {group.links.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.name}
+                </Link>
+              ))}
             </nav>
           ))}
 
-          <div className={styles.footerSection}>
-            <h4>Follow Us</h4>
-            <p className={styles.socialDescription}>
-              Match updates, community news and ways to get involved.
-            </p>
-            <div className={styles.socialIcons}>
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.id}
-                  href={social.href}
-                  className={styles.socialIcon}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${SITE_NAME} on ${social.label}`}
-                >
-                  <Image
-                    src={socialLogos[social.id]}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className={styles.socialImage}
-                  />
-                </a>
-              ))}
+          <div className={styles.links}>
+            <h3>Follow Us</h3>
+            <p>Match updates, community news and ways to get involved.</p>
+            <div className={styles.socials}>
+              {SOCIALS.map((social) => {
+                const Icon = socialIcons[social.id];
+                return (
+                  <a key={social.id} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`${SITE_NAME} on ${social.label}`}>
+                    <Icon aria-hidden="true" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.footerBottom}>
-        <div className={styles.footerBottomContent}>
+        <div className={`container ${styles.bottom}`}>
           <p>
             &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
+          <p>Proudly serving the Somali Bantu community in Edmonton, on Treaty 6 territory.</p>
         </div>
       </div>
     </footer>
