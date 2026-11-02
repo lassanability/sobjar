@@ -1,6 +1,7 @@
 import { Toaster } from "sonner";
 import "@/app/styles/global.css";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Navbar from "@/app/component/Navbar";
 import Footer from "@/app/component/Footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/app/lib/site";
@@ -12,11 +13,11 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const fraunces = Fraunces({
+const fraunces = localFont({
+  src: "./fonts/Fraunces.woff2",
   display: "swap",
-  subsets: ["latin"],
   variable: "--font-fraunces",
-  weight: ["500", "600", "700"],
+  weight: "500 700",
 });
 
 export const viewport = {
