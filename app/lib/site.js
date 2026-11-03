@@ -19,16 +19,14 @@ export const SOCIALS = [
   { id: "instagram", label: "Instagram", href: "https://www.instagram.com/sobjarstar/" },
   { id: "whatsapp", label: "WhatsApp", href: "https://chat.whatsapp.com/CnjBdL4RvVT7raFaJHml88" },
   { id: "youtube", label: "YouTube", href: "https://www.youtube.com/channel/UCquX1JwHrF0_ijoCIZGuwhA" },
-  { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@sobjarstar5" },
+  { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@sobjarfc" },
 ];
 
 export const WHATSAPP_URL = SOCIALS.find((s) => s.id === "whatsapp").href;
 
 export const TEAM = {
-  name: "Sobjar Star FC",
-  path: "/sobjar-star",
-  coach: "Abdihakim Aweys Noor",
-  division: "Alberta Soccer Men's Tier 3",
+  name: "Sobjar FC",
+  path: "/sobjar-fc",
   season: "2026",
   honour: "Provincial Silver Medallists",
 };

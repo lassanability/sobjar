@@ -1,205 +1,181 @@
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 40px 0 96px;
-  color: var(--white);
-  background-color: var(--forest-deep);
-  background-image: radial-gradient(circle at 85% 20%, rgba(242, 176, 30, 0.14), transparent 45%), var(--weave-dark);
+  padding: 40px 0 64px;
+  background-color: var(--paper);
 }
 
 .inner {
   display: grid;
-  gap: 32px;
+  gap: 40px;
+  align-items: center;
 }
 
 .copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 32px;
-  order: 2;
+  align-items: flex-start;
+  gap: 22px;
 }
 
-.slide {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  animation: slideIn 0.6s var(--ease) both;
+.copy h1 {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.slide h1,
-.slide h2 {
-  font-size: 34px;
-  color: var(--white);
+.copy h1 span {
+  color: var(--green);
 }
 
-.slide p {
+.lead {
   max-width: 520px;
   font-size: 17px;
-  color: rgba(255, 255, 255, 0.82);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 6px;
 }
 
-.controls {
+.news {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 8px;
+  padding: 10px 16px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.toggle {
-  display: grid;
-  place-items: center;
+.news:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow-sm);
+}
+
+.newsThumb {
+  position: relative;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  font-size: 20px;
-  border-radius: 50%;
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
 }
 
-.indicator {
-  position: relative;
+.newsThumb img {
+  object-fit: cover;
+}
+
+.newsText {
+  display: flex;
   flex: 1;
-  height: 4px;
-  max-width: 56px;
-  overflow: hidden;
-  border-radius: var(--radius-pill);
-  background-color: rgba(255, 255, 255, 0.25);
+  flex-direction: column;
+  line-height: 1.35;
 }
 
-.indicator::before {
-  content: "";
-  position: absolute;
-  inset: -12px 0;
+.newsText strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest-deep);
 }
 
-.progress {
-  position: absolute;
-  inset: 0;
-  transform-origin: left;
-  background-color: var(--gold);
-  animation: fill 8s linear forwards;
+.newsText small {
+  font-size: 13px;
+  color: var(--ink-3);
 }
 
-.paused {
-  animation-play-state: paused;
+.newsArrow {
+  flex-shrink: 0;
+  color: var(--gold-deep);
+  transition: transform 0.2s ease;
 }
 
-.visual {
+.news:hover .newsArrow {
+  transform: translateX(3px);
+}
+
+.mosaic {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220px 200px;
+}
+
+.photo {
   position: relative;
-  order: 1;
-  padding: 0 0 14px 14px;
-}
-
-.visual::before {
-  content: "";
-  position: absolute;
-  inset: 14px 14px 0 0;
-  border-radius: var(--radius-lg);
-  background: var(--stripes);
-  opacity: 0.9;
-}
-
-.frame {
-  position: relative;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: var(--radius-lg);
-  background-color: var(--forest);
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--sand);
+}
+
+.photo:first-child {
+  grid-column: span 2;
 }
 
 .image {
   object-fit: cover;
-  opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 0.9s ease, transform 6s ease;
 }
 
-.imageActive {
-  opacity: 1;
-  transform: scale(1);
+.photo:nth-child(2) .image {
+  object-position: 50% 30%;
 }
 
-.count {
+.photo figcaption {
   position: absolute;
-  right: 14px;
-  bottom: 14px;
-  padding: 4px 12px;
+  left: 12px;
+  bottom: 12px;
+  padding: 5px 12px;
   font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 500;
   border-radius: var(--radius-pill);
-  color: var(--white);
-  background-color: rgba(7, 51, 29, 0.7);
+  color: var(--forest-deep);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
-.rivers {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@keyframes fill {
-  from {
-    transform: scaleX(0);
+@media (min-width: 48em) {
+  .hero {
+    padding: 64px 0 88px;
   }
 
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+  .copy h1 {
+    font-size: 50px;
   }
 
-  to {
-    opacity: 1;
-    transform: none;
+  .lead {
+    font-size: 18px;
+  }
+
+  .mosaic {
+    grid-template-rows: 300px 240px;
+    gap: 16px;
   }
 }
 
 @media (min-width: 64em) {
-  .hero {
-    padding: 72px 0 120px;
-  }
-
   .inner {
-    grid-template-columns: 1fr 1.15fr;
+    grid-template-columns: 1fr 1.1fr;
     gap: 64px;
-    align-items: center;
   }
 
-  .copy {
-    order: 1;
+  .copy h1 {
+    font-size: 56px;
   }
 
-  .visual {
-    order: 2;
+  .mosaic {
+    grid-template-columns: 1.25fr 1fr;
+    grid-template-rows: 280px 240px;
   }
 
-  .slide {
-    min-height: 330px;
-    justify-content: center;
+  .photo:first-child {
+    grid-column: auto;
   }
 
-  .slide h1,
-  .slide h2 {
-    font-size: 50px;
-  }
-
-  .slide p {
-    font-size: 18px;
+  .photo:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 }

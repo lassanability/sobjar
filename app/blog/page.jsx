@@ -9,14 +9,14 @@ import grid from "@/app/styles/cardGrid.module.css";
 export const metadata = pageMetadata({
   title: "News & Stories",
   description:
-    "News from Sobjar Canada and Sobjar Star FC: community updates, match results and stories from Somali Bantu families in Alberta.",
+    "News from Sobjar Canada and Sobjar FC: community updates, match results and stories from Somali Bantu families in Alberta.",
   path: "/blog",
 });
 
 export default function BlogPage() {
   return (
     <>
-      <PageHero eyebrow="News" title="News and stories" description="Updates from our community, programs and the Sobjar Star football team." image={HomeImage1} imageAlt="A Sobjar community celebration in Edmonton" />
+      <PageHero eyebrow="News" title="News and stories" description="Updates from our community, programs and Sobjar FC." image={HomeImage1} imageAlt="A Sobjar community celebration in Edmonton" />
       <Section>
         <div className={grid.grid}>
           {posts.map((post) => (

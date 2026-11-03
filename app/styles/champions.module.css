@@ -1,7 +1,6 @@
 .section {
   padding: 72px 0;
-  background-color: var(--forest);
-  background-image: radial-gradient(circle at 10% 10%, rgba(65, 137, 221, 0.18), transparent 40%), var(--weave-dark);
+  background-color: var(--forest-deep);
 }
 
 .wrapper {
@@ -32,9 +31,6 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  outline: 6px solid rgba(242, 176, 30, 0.35);
-  outline-offset: -6px;
 }
 
 .medalImage {

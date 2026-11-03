@@ -3,10 +3,6 @@
   background-color: var(--forest-deep);
 }
 
-.body {
-  background-image: var(--weave-dark);
-}
-
 .callout {
   display: flex;
   flex-direction: column;

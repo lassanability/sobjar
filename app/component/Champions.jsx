@@ -10,27 +10,27 @@ import styles from "@/app/styles/champions.module.css";
 
 const stats = [
   { value: "Silver", label: "Provincial medal" },
-  { value: "Tier 3", label: "Men's division" },
+  { value: "Edmonton", label: "Home city" },
   { value: TEAM.season, label: "Alberta Soccer" },
 ];
 
 const videos = [
-  { src: "/assets/video1.mp4", title: "Celebrating the win", caption: "Sobjar Star at the 2026 Provincials" },
+  { src: "/assets/video1.mp4", title: "Celebrating the win", caption: "Sobjar FC at the 2026 Provincials" },
   { src: "/assets/video2.mp4", title: "Medal moment", caption: "Players and families together" },
 ];
 
 export default function Champions({ showLink = true }) {
   return (
-    <section className={styles.section} aria-label="Sobjar Star FC provincial silver">
+    <section className={styles.section} aria-label="Sobjar FC provincial silver">
       <div className={`container ${styles.wrapper}`}>
         <div className={styles.intro}>
           <div className={styles.copy}>
             <SectionHeader
               light
               align="left"
-              tag="We won"
+              tag="Sobjar FC"
               title="Alberta Provincial Silver Medallists"
-              description="Sobjar Star FC took silver in Men's Tier 3 at the 2026 Alberta Soccer Outdoor Provincial Championships, with group stage wins over YBG Dons, Bonnyville U23 and Croatia Torcida."
+              description="Our team brought home silver medals from the 2026 Alberta Soccer Provincial Championships. A proud moment for the players, their families and our whole community."
             />
             <StatList light items={stats} />
             {showLink && (

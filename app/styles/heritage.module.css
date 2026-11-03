@@ -1,167 +1,121 @@
 .section {
-  padding: 72px 0;
-  background-color: var(--paper);
-  background-image: var(--weave);
+  position: relative;
+  padding: 72px 0 96px;
+  background-color: var(--white);
 }
 
 .inner {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 48px;
+  align-items: center;
 }
 
-.head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+.media {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background-color: var(--sand);
+}
+
+.image {
+  object-fit: cover;
 }
 
 .emblem {
-  display: none;
-  flex-shrink: 0;
-  padding: 18px;
-  border-radius: 50%;
+  position: absolute;
+  right: 16px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   background-color: var(--white);
   box-shadow: var(--shadow-md);
 }
 
-.timeline {
-  position: relative;
-}
-
-.river {
-  display: none;
-}
-
-.steps {
-  position: relative;
-  display: grid;
-  gap: 20px;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 24px;
-  border-radius: var(--radius-lg);
-  background-color: var(--white);
-  border: 1px solid var(--line);
-}
-
-.marker {
-  display: grid;
-  place-items: center;
+.emblem img {
   width: 52px;
-  height: 52px;
-  font-size: 24px;
-  border-radius: 50%;
-  color: var(--white);
-  background-color: var(--green);
-  box-shadow: 0 0 0 5px var(--white), 0 0 0 6px var(--line);
+  height: auto;
 }
 
-.step:nth-child(2) .marker {
-  background-color: var(--clay);
-}
-
-.step:nth-child(3) .marker {
-  background-color: var(--maple);
-}
-
-.step:nth-child(4) .marker {
-  background-color: var(--sky);
-}
-
-.place {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--clay);
-}
-
-.step h3 {
-  font-size: 20px;
-}
-
-.step p {
-  font-size: 15px;
-}
-
-.culture {
+.emblem span {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 28px;
-  border-radius: var(--radius-lg);
-  color: var(--white);
-  background-color: var(--forest-deep);
-  background-image: var(--weave-dark);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink-3);
 }
 
-.culture h3 {
-  font-size: 22px;
-  color: var(--white);
+.emblem strong {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--forest-deep);
 }
 
-.culture ul {
+.copy {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.copy > p {
+  max-width: 560px;
+}
+
+.commitments {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+  margin: 4px 0 8px;
 }
 
-.culture li {
-  padding: 8px 16px;
-  font-size: 14px;
+.commitments li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-weight: 500;
-  border-radius: var(--radius-pill);
-  border: 1px solid rgba(242, 176, 30, 0.45);
-  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--forest-deep);
 }
 
-@media (min-width: 48em) {
-  .emblem {
-    display: block;
-  }
+.commitments svg {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  border-radius: var(--radius-pill);
+  color: var(--green);
+  background-color: var(--green-soft);
+}
 
-  .steps {
-    grid-template-columns: 1fr 1fr;
-  }
+.rivers {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.6;
 }
 
 @media (min-width: 64em) {
   .section {
-    padding: 104px 0;
+    padding: 112px 0 136px;
   }
 
-  .river {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: block;
+  .inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
   }
 
-  .steps {
-    grid-template-columns: repeat(4, 1fr);
-    padding-top: 10px;
-  }
-
-  .step {
-    padding: 0 8px 0 0;
-    border: none;
-    background: none;
-  }
-
-  .culture {
-    flex-direction: row;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .culture h3 {
-    flex-shrink: 0;
+  .emblem {
+    right: -24px;
   }
 }

@@ -8,26 +8,23 @@
 
 .jubba,
 .shabelle {
-  stroke-width: 2.5;
-  stroke-dasharray: 6 10;
-  animation: flow 28s linear infinite;
+  stroke-width: 1.5;
 }
 
 .jubba {
-  stroke: var(--sky);
+  stroke: rgba(29, 112, 71, 0.35);
 }
 
 .shabelle {
-  stroke: var(--gold);
-  animation-duration: 36s;
+  stroke: rgba(226, 167, 46, 0.55);
 }
 
 .light .jubba {
-  stroke: rgba(255, 255, 255, 0.55);
+  stroke: rgba(255, 255, 255, 0.22);
 }
 
 .light .shabelle {
-  stroke: rgba(242, 176, 30, 0.8);
+  stroke: rgba(226, 167, 46, 0.45);
 }
 
 .maple {
@@ -59,11 +56,5 @@
   width: 18px;
   height: 6px;
   border-radius: var(--radius-pill);
-  background: linear-gradient(90deg, var(--green) 0 40%, var(--gold) 40% 60%, var(--sky) 60%);
-}
-
-@keyframes flow {
-  to {
-    stroke-dashoffset: -320;
-  }
+  background: linear-gradient(90deg, var(--green) 0 50%, var(--gold) 50%);
 }

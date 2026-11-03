@@ -5,7 +5,6 @@
   min-height: 70svh;
   padding-top: 64px;
   background-color: var(--paper);
-  background-image: var(--weave);
 }
 
 .inner {

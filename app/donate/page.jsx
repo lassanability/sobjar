@@ -98,7 +98,7 @@ export default function DonationPage() {
         stats={communityStats}
       />
 
-      <Section tone="weave">
+      <Section tone="sand">
         <div className={styles.layout}>
           <div className={styles.causes}>
             <div className={styles.causesHead}>

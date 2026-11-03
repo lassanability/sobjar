@@ -1,6 +1,5 @@
 import Image from "next/image";
 import SectionHeader from "@/app/component/SectionHeader";
-import { Rivers } from "@/app/component/Motifs";
 import styles from "@/app/styles/ctaBanner.module.css";
 
 export default function CtaBanner({ tag, title, description, image, children }) {
@@ -11,9 +10,6 @@ export default function CtaBanner({ tag, title, description, image, children }) 
       <div className={`container ${styles.inner}`}>
         <SectionHeader light tag={tag} title={title} description={description} />
         <div className={styles.actions}>{children}</div>
-      </div>
-      <div className={styles.rivers}>
-        <Rivers light />
       </div>
     </section>
   );

@@ -1,22 +1,23 @@
 :root {
-  --forest: #0b4d2c;
-  --forest-deep: #07331d;
-  --green: #138a44;
-  --green-soft: #e7f3ec;
-  --gold: #f2b01e;
-  --gold-deep: #c98a06;
-  --gold-soft: #fdf3d9;
-  --sky: #4189dd;
+  --forest: #154a32;
+  --forest-deep: #0d2e20;
+  --green: #1d7047;
+  --green-soft: #e6eee8;
+  --gold: #e2a72e;
+  --gold-deep: #a97a17;
+  --gold-soft: #f7ecd4;
+  --sky: #3c74b8;
   --sky-soft: #e9f1fb;
   --maple: #d52b1e;
   --earth: #7b2d2d;
-  --clay: #b5652b;
+  --clay: #a65d33;
 
-  --ink: #14211a;
-  --ink-2: #4b5a52;
+  --ink: #17211b;
+  --ink-2: #4a5550;
   --ink-3: #7a877f;
-  --line: #e3e7e1;
-  --paper: #faf8f2;
+  --line: #e6e0d5;
+  --paper: #f7f3eb;
+  --sand: #efe8da;
   --white: #ffffff;
 
   --font-body: var(--font-inter), system-ui, sans-serif;
@@ -36,9 +37,7 @@
   --header: 72px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
-  --stripes: repeating-linear-gradient(90deg, var(--green) 0 28px, var(--gold) 28px 34px, var(--earth) 34px 40px, var(--sky) 40px 52px, var(--gold) 52px 56px, var(--forest) 56px 84px, var(--maple) 84px 88px, var(--gold) 88px 92px);
-  --weave: repeating-linear-gradient(45deg, rgba(181, 101, 43, 0.09) 0 10px, transparent 10px 20px), repeating-linear-gradient(-45deg, rgba(242, 176, 30, 0.1) 0 10px, transparent 10px 20px);
-  --weave-dark: repeating-linear-gradient(45deg, rgba(242, 176, 30, 0.08) 0 12px, transparent 12px 24px), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 12px, transparent 12px 24px);
+  --stripes: linear-gradient(90deg, var(--forest) 0 40%, var(--gold) 40% 60%, var(--clay) 60% 80%, var(--sky) 80%);
 }
 
 *,
@@ -165,12 +164,8 @@ select:focus {
 }
 
 .stripes {
-  height: 6px;
+  height: 4px;
   background: var(--stripes);
-}
-
-.weave {
-  background-image: var(--weave);
 }
 
 .visuallyHidden {

@@ -16,14 +16,12 @@
   background-color: var(--paper);
 }
 
-.weave {
-  background-color: var(--paper);
-  background-image: var(--weave);
+.sand {
+  background-color: var(--sand);
 }
 
 .forest {
   background-color: var(--forest-deep);
-  background-image: var(--weave-dark);
 }
 
 @media (min-width: 48em) {

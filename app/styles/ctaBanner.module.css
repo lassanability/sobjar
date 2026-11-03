@@ -1,7 +1,7 @@
 .banner {
   position: relative;
   overflow: hidden;
-  padding: 80px 0 104px;
+  padding: 88px 0;
   background-color: var(--forest-deep);
 }
 
@@ -12,8 +12,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(7, 51, 29, 0.86);
-  background-image: var(--weave-dark);
+  background-image: linear-gradient(180deg, rgba(13, 46, 32, 0.8), rgba(13, 46, 32, 0.92));
 }
 
 .inner {
@@ -29,11 +28,4 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-}
-
-.rivers {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }

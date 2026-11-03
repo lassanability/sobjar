@@ -1,135 +1,74 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { MdPause, MdPlayArrow } from "react-icons/md";
+import { IoArrowForward } from "react-icons/io5";
 import ButtonLink from "@/app/component/ButtonLink";
-import { Eyebrow, Rivers } from "@/app/component/Motifs";
+import { Eyebrow } from "@/app/component/Motifs";
+import { TEAM } from "@/app/lib/site";
 import MedalImage from "@/public/assets/medal.jpeg";
-import HomeImage1 from "@/public/assets/home1.jpg";
+import EventMissionImage from "@/public/assets/eventMission.jpg";
+import SportImage1 from "@/public/assets/sport1.jpeg";
 import HomeImage2 from "@/public/assets/home2.jpg";
-import HomeImage3 from "@/public/assets/home3.jpg";
-import HomeImage4 from "@/public/assets/home4.jpg";
-import HomeImage5 from "@/public/assets/home5.jpg";
 import styles from "@/app/styles/homeHero.module.css";
 
-const slides = [
+const photos = [
   {
-    image: MedalImage,
-    accent: "We won",
-    title: "Alberta Provincial Silver Medallists",
-    description:
-      "Sobjar Star FC took silver in Men's Tier 3 at the 2026 Alberta Soccer Provincials. A proud moment for our whole community.",
-    cta: { label: "See the win", href: "/sobjar-star" },
+    image: EventMissionImage,
+    alt: "Annual General Meeting of the Somali Bantu Jareer Weyne Society of Alberta under the Canadian and Somali flags",
+    caption: "Annual General Meeting",
+    sizes: "(max-width: 64em) 100vw, 34vw",
   },
   {
-    image: HomeImage1,
-    accent: "Together we rise",
-    title: "Weaving Dreams, Building Futures",
-    description:
-      "We bring Somali Bantu families together to celebrate their heritage while building pathways to success in Alberta.",
-    cta: { label: "Our mission", href: "/mission" },
+    image: SportImage1,
+    alt: "Sobjar FC squad in green kits",
+    caption: TEAM.name,
+    sizes: "(max-width: 64em) 50vw, 26vw",
   },
   {
     image: HomeImage2,
-    accent: "Tradition lives",
-    title: "Cultural Harmony in Motion",
-    description:
-      "Through celebrations, music and storytelling, we keep our culture alive and our community bonds strong.",
-    cta: { label: "About us", href: "/about" },
-  },
-  {
-    image: HomeImage3,
-    accent: "Future leaders",
-    title: "Empowering Tomorrow's Leaders",
-    description:
-      "From mentorship to leadership programs, we nurture the next generation of changemakers.",
-    cta: { label: "Our programs", href: "/programs" },
-  },
-  {
-    image: HomeImage4,
-    accent: "Breaking barriers",
-    title: "Knowledge as Liberation",
-    description:
-      "We provide advocacy, resources and steady support to help community members thrive in every part of life.",
-    cta: { label: "Get involved", href: "/getInvolved" },
-  },
-  {
-    image: HomeImage5,
-    accent: "Joyful together",
-    title: "Unity Through Celebration",
-    description:
-      "Football tournaments, festivals and gatherings are the heartbeat of our community.",
-    cta: { label: "Support us", href: "/donate" },
+    alt: "Mothers in colourful garbasaar sharing a community dinner",
+    caption: "Community dinner",
+    sizes: "(max-width: 64em) 50vw, 34vw",
   },
 ];
 
 export default function HomeHero() {
-  const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
-  const next = () => setIndex((current) => (current + 1) % slides.length);
-  const slide = slides[index];
-
   return (
-    <section className={styles.hero} aria-roledescription="carousel" aria-label="Sobjar highlights">
+    <section className={styles.hero}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.copy} aria-live={playing ? "off" : "polite"}>
-          <div key={slide.title} className={styles.slide}>
-            <Eyebrow light canada>
-              {slide.accent}
-            </Eyebrow>
-            {index === 0 ? <h1>{slide.title}</h1> : <h2>{slide.title}</h2>}
-            <p>{slide.description}</p>
-            <div className={styles.actions}>
-              <ButtonLink href={slide.cta.href} variant="gold" arrow>
-                {slide.cta.label}
-              </ButtonLink>
-              <ButtonLink href="/donate" variant="outline">
-                Donate
-              </ButtonLink>
-            </div>
+        <div className={styles.copy}>
+          <Eyebrow>Somali Bantu Jareer Weyne Society of Alberta</Eyebrow>
+          <h1>
+            Rooted in our heritage, <span>growing together</span> in Canada.
+          </h1>
+          <p className={styles.lead}>
+            We support Somali Bantu Jareer/weyne families, youth and newcomers in Edmonton and across Alberta through education, advocacy, sport and community care.
+          </p>
+          <div className={styles.actions}>
+            <ButtonLink href="/donate">Support our work</ButtonLink>
+            <ButtonLink href="/mission" variant="ghost" arrow>
+              Our mission
+            </ButtonLink>
           </div>
-
-          <div className={styles.controls}>
-            <button type="button" className={styles.toggle} onClick={() => setPlaying((value) => !value)} aria-label={playing ? "Pause slideshow" : "Play slideshow"}>
-              {playing ? <MdPause aria-hidden="true" /> : <MdPlayArrow aria-hidden="true" />}
-            </button>
-            {slides.map((item, slideIndex) => (
-              <button
-                type="button"
-                key={item.title}
-                className={styles.indicator}
-                onClick={() => setIndex(slideIndex)}
-                aria-label={`Show slide ${slideIndex + 1}: ${item.title}`}
-                aria-current={slideIndex === index}
-              >
-                {slideIndex === index && <span key={`${index}-${playing}`} className={`${styles.progress} ${playing ? "" : styles.paused}`} onAnimationEnd={next} />}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.visual}>
-          <div className={styles.frame}>
-            {slides.map((item, slideIndex) => (
-              <Image
-                key={item.title}
-                src={item.image}
-                alt=""
-                fill
-                sizes="(max-width: 64em) 100vw, 55vw"
-                priority={slideIndex === 0}
-                className={`${styles.image} ${slideIndex === index ? styles.imageActive : ""}`}
-              />
-            ))}
-            <span className={styles.count} aria-hidden="true">
-              {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+          <Link href={TEAM.path} className={styles.news}>
+            <span className={styles.newsThumb}>
+              <Image src={MedalImage} alt="" fill sizes="52px" />
             </span>
-          </div>
+            <span className={styles.newsText}>
+              <strong>{TEAM.name} win provincial silver</strong>
+              <small>2026 Alberta Soccer Provincial Championships</small>
+            </span>
+            <IoArrowForward aria-hidden="true" className={styles.newsArrow} />
+          </Link>
         </div>
-      </div>
-      <div className={styles.rivers}>
-        <Rivers light />
+
+        <div className={styles.mosaic}>
+          {photos.map((photo, index) => (
+            <figure key={photo.caption} className={styles.photo}>
+              <Image src={photo.image} alt={photo.alt} fill sizes={photo.sizes} priority={index === 0} className={styles.image} />
+              <figcaption>{photo.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );

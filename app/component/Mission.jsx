@@ -80,7 +80,7 @@ export default function Mission() {
         </div>
       </Section>
 
-      <Section tone="weave">
+      <Section tone="sand">
         <SectionHeader tag="Our Specific Purposes" title="Comprehensive community services" description="Our organization is structured to address the diverse needs of our community through these specific purposes and services." />
         <div className={`${grid.grid} ${grid.four}`}>
           {purposes.map((purpose, index) => (

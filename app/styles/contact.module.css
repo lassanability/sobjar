@@ -180,7 +180,6 @@
 .visit {
   color: var(--white);
   background-color: var(--forest-deep);
-  background-image: var(--weave-dark);
 }
 
 .visit h2,
@@ -224,7 +223,6 @@
 
 .social {
   background-color: var(--paper);
-  background-image: var(--weave);
   border: 1px solid var(--line);
 }
 

@@ -93,7 +93,7 @@ export default function GetInvolved() {
         </div>
       </Section>
 
-      <Section tone="weave">
+      <Section tone="sand">
         <SectionHeader
           tag="Your impact"
           title="Your impact matters"

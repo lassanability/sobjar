@@ -15,7 +15,6 @@ import ButtonLink from "@/app/component/ButtonLink";
 import Champions from "@/app/component/Champions";
 import CtaBanner from "@/app/component/CtaBanner";
 import Gallery from "@/app/component/Gallery";
-import Heritage from "@/app/component/Heritage";
 import InfoCard from "@/app/component/InfoCard";
 import PageHero from "@/app/component/PageHero";
 import Section from "@/app/component/Section";
@@ -67,7 +66,7 @@ const values = [
 ];
 
 const sportsGallery = [
-  { image: SportImage1, alt: "Sobjar Star FC" },
+  { image: SportImage1, alt: "Sobjar FC" },
   { image: SportImage2, alt: "Match Day" },
   { image: SportImage3, alt: "Team Spirit" },
   { image: SportImage4, alt: "Community Tournament" },
@@ -105,8 +104,6 @@ export default function About() {
         <Story {...heritage} image={AboutImage} imageAlt="Young women from the Somali Bantu community gathered on a field in Edmonton" />
       </Section>
 
-      <Heritage />
-
       <Section tone="paper">
         <SectionHeader tag="Our Values" title="What drives us forward" description="Our core values reflect our commitment to preserving our heritage while building a stronger future for our community in Canada." />
         <div className={grid.grid}>
@@ -124,12 +121,12 @@ export default function About() {
         <SectionHeader
           tag="Our Sports"
           title="Uniting community through football"
-          description="Through our Sobjar Star football program, we bring youth and families together on the pitch. Every match builds teamwork, discipline, and lasting friendships across our community."
+          description="Through Sobjar FC, we bring youth and families together on the pitch. Every match builds teamwork, discipline, and lasting friendships across our community."
         />
         <Gallery items={sportsGallery} />
       </Section>
 
-      <Section id="leadership" tone="weave">
+      <Section id="leadership" tone="sand">
         <SectionHeader
           tag="Our Team"
           title="Meet our leadership"

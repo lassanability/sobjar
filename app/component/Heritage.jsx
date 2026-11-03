@@ -1,84 +1,54 @@
 import Image from "next/image";
-import { GiMapleLeaf, GiPalmTree, GiWheat } from "react-icons/gi";
-import { IoPeople } from "react-icons/io5";
+import { IoCheckmark } from "react-icons/io5";
+import AboutImage from "@/public/assets/about.jpg";
 import LogoImg from "@/public/assets/logo.png";
+import ButtonLink from "@/app/component/ButtonLink";
 import SectionHeader from "@/app/component/SectionHeader";
 import { Rivers } from "@/app/component/Motifs";
 import styles from "@/app/styles/heritage.module.css";
 
-const journey = [
-  {
-    icon: GiWheat,
-    place: "Jubba and Shabelle valleys",
-    title: "Farmers of the river valleys",
-    text: "For generations our families farmed the fertile Jubba and Shabelle river valleys of southern Somalia, keeping their own languages, music and traditions.",
-  },
-  {
-    icon: GiPalmTree,
-    place: "Kenya",
-    title: "Displacement and survival",
-    text: "The civil war of the early 1990s forced many Somali Bantu families into refugee camps in Kenya, where they waited years for a safe place to call home.",
-  },
-  {
-    icon: GiMapleLeaf,
-    place: "Canada",
-    title: "A new home in Alberta",
-    text: "Families resettled across Canada and built new lives in Edmonton and across Alberta, carrying their culture with them.",
-  },
-  {
-    icon: IoPeople,
-    place: "Edmonton",
-    title: "Sobjar, rooted together",
-    text: "The Jareer Weyne Society of Alberta brings us together so our youth grow up proud of where they come from and confident in where they are going.",
-  },
-];
-
-const culture = ["Maay Maay and Kizigua heritage", "Woven mats and baskets", "Colourful garbasaar and dirac", "Drums, song and dance", "Shared meals and celebrations", "Football on summer evenings"];
+const commitments = ["Cultural heritage preservation", "Advocacy for equality and recognition", "Community-centered support programs"];
 
 export default function Heritage() {
   return (
     <section className={styles.section} aria-label="Our heritage">
       <div className={`container ${styles.inner}`}>
-        <div className={styles.head}>
-          <SectionHeader
-            align="left"
-            tag="Our roots"
-            title="From the Jubba valley to Alberta"
-            description="The tree on our emblem stands for deep roots and a shared future. This is the journey our families carried with them."
-          />
+        <div className={styles.media}>
+          <div className={styles.photo}>
+            <Image src={AboutImage} alt="Young women from the Somali Bantu community gathered on a field in Edmonton" fill sizes="(max-width: 64em) 100vw, 45vw" className={styles.image} />
+          </div>
           <div className={styles.emblem}>
-            <Image src={LogoImg} alt="Sobjar emblem with the Canadian and Somali flags and a tree" width={160} height={150} />
+            <Image src={LogoImg} alt="Sobjar emblem with the Canadian and Somali flags" width={72} height={68} />
+            <span>
+              <strong>Jareer Weyne</strong>
+              Society of Alberta
+            </span>
           </div>
         </div>
 
-        <div className={styles.timeline}>
-          <div className={styles.river}>
-            <Rivers />
-          </div>
-          <ol className={styles.steps}>
-            {journey.map((step, index) => (
-              <li key={step.title} className={styles.step}>
-                <span className={styles.marker} aria-hidden="true">
-                  <step.icon />
-                </span>
-                <span className={styles.place}>
-                  {String(index + 1).padStart(2, "0")} · {step.place}
-                </span>
-                <h3>{step.title}</h3>
-                <p>{step.text}</p>
+        <div className={styles.copy}>
+          <SectionHeader align="left" tag="Our heritage" title="From the Juba and Shabelle valleys to Alberta" />
+          <p>
+            The Somali Bantu Jareer/weyne are a proud people of Somalia with their own Bantu heritage, languages and traditions. For generations our community worked to be recognized and treated with equal dignity, and that strength continues to guide us today.
+          </p>
+          <p>
+            Our ancestors settled in the arable Juba and Shabelle river valleys as farmers. Through every challenge, our community has kept its rich cultural heritage while building new lives in Canada through resilience, unity and determination.
+          </p>
+          <ul className={styles.commitments}>
+            {commitments.map((item) => (
+              <li key={item}>
+                <IoCheckmark aria-hidden="true" />
+                {item}
               </li>
             ))}
-          </ol>
-        </div>
-
-        <div className={styles.culture}>
-          <h3>Culture we keep alive</h3>
-          <ul>
-            {culture.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
           </ul>
+          <ButtonLink href="/about" variant="ghost" arrow>
+            Read our story
+          </ButtonLink>
         </div>
+      </div>
+      <div className={styles.rivers}>
+        <Rivers />
       </div>
     </section>
   );

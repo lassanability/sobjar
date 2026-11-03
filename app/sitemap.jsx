@@ -3,7 +3,7 @@ import { SITE_URL } from "@/app/lib/site";
 
 const routes = [
   { path: "", priority: 1 },
-  { path: "/sobjar-star", priority: 0.9 },
+  { path: "/sobjar-fc", priority: 0.9 },
   { path: "/about", priority: 0.8 },
   { path: "/mission", priority: 0.8 },
   { path: "/programs", priority: 0.7 },

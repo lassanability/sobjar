@@ -114,7 +114,7 @@ export default function Programs() {
         </div>
       </Section>
 
-      <Section tone="weave">
+      <Section tone="sand">
         <SectionHeader tag="Featured Programs" title="Popular programs this season" description="Discover our most impactful programs that are making a difference in our community." />
         <div className={`${grid.grid} ${grid.four}`}>
           {featuredPrograms.map((program) => (

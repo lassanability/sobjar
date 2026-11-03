@@ -21,7 +21,7 @@ const fraunces = localFont({
 });
 
 export const viewport = {
-  themeColor: "#0b4d2c",
+  themeColor: "#154a32",
 };
 
 export const metadata = {
@@ -35,7 +35,7 @@ export const metadata = {
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   keywords: [
     "Sobjar",
-    "Sobjar Star FC",
+    "Sobjar FC",
     "Somali Bantu",
     "Jareer Weyne",
     "Somali Bantu Edmonton",
@@ -90,8 +90,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-CA">
-      <body className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en-CA" className={`${inter.variable} ${fraunces.variable}`}>
+      <body>
         <Toaster position="top-center" richColors toastOptions={{ className: "toast" }} />
         <div className="app">
           <Navbar />
